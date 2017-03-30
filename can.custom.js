@@ -717,6 +717,39 @@ define('can-construct', function (require, exports, module) {
     };
     module.exports = namespace.Construct = Construct;
 });
+/*can-util@3.3.3#js/global/global*/
+define('can-util/js/global/global', function (require, exports, module) {
+    (function (global) {
+        var GLOBAL;
+        module.exports = function (setGlobal) {
+            if (setGlobal !== undefined) {
+                GLOBAL = setGlobal;
+            }
+            if (GLOBAL) {
+                return GLOBAL;
+            } else {
+                return GLOBAL = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope ? self : typeof process === 'object' && {}.toString.call(process) === '[object process]' ? global : window;
+            }
+        };
+    }(function () {
+        return this;
+    }()));
+});
+/*can-util@3.3.3#dom/document/document*/
+define('can-util/dom/document/document', function (require, exports, module) {
+    (function (global) {
+        var global = require('can-util/js/global/global');
+        var setDocument;
+        module.exports = function (setDoc) {
+            if (setDoc) {
+                setDocument = setDoc;
+            }
+            return setDocument || global().document;
+        };
+    }(function () {
+        return this;
+    }()));
+});
 /*can-util@3.3.3#js/is-empty-object/is-empty-object*/
 define('can-util/js/is-empty-object/is-empty-object', function (require, exports, module) {
     module.exports = function (obj) {
@@ -778,39 +811,6 @@ define('can-util/dom/data/core', function (require, exports, module) {
         },
         delete: deleteNode
     };
-});
-/*can-util@3.3.3#js/global/global*/
-define('can-util/js/global/global', function (require, exports, module) {
-    (function (global) {
-        var GLOBAL;
-        module.exports = function (setGlobal) {
-            if (setGlobal !== undefined) {
-                GLOBAL = setGlobal;
-            }
-            if (GLOBAL) {
-                return GLOBAL;
-            } else {
-                return GLOBAL = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope ? self : typeof process === 'object' && {}.toString.call(process) === '[object process]' ? global : window;
-            }
-        };
-    }(function () {
-        return this;
-    }()));
-});
-/*can-util@3.3.3#dom/document/document*/
-define('can-util/dom/document/document', function (require, exports, module) {
-    (function (global) {
-        var global = require('can-util/js/global/global');
-        var setDocument;
-        module.exports = function (setDoc) {
-            if (setDoc) {
-                setDocument = setDoc;
-            }
-            return setDocument || global().document;
-        };
-    }(function () {
-        return this;
-    }()));
 });
 /*can-util@3.3.3#dom/mutation-observer/mutation-observer*/
 define('can-util/dom/mutation-observer/mutation-observer', function (require, exports, module) {
@@ -2634,7 +2634,7 @@ define('can-compute', function (require, exports, module) {
     COMPUTE.temporarilyBind = Compute.temporarilyBind;
     module.exports = namespace.compute = COMPUTE;
 });
-/*can-control@3.0.7#can-control*/
+/*can-control@3.0.9#can-control*/
 define('can-control', function (require, exports, module) {
     var Construct = require('can-construct');
     var namespace = require('can-namespace');
@@ -2643,6 +2643,7 @@ define('can-control', function (require, exports, module) {
     var isFunction = require('can-util/js/is-function/is-function');
     var each = require('can-util/js/each/each');
     var dev = require('can-util/js/dev/dev');
+    var vDom = require('can-util/dom/document/document');
     var types = require('can-types');
     var get = require('can-util/js/get/get');
     var domData = require('can-util/dom/data/data');
@@ -2777,6 +2778,10 @@ define('can-control', function (require, exports, module) {
     }, {
         setup: function (element, options) {
             var cls = this.constructor, pluginname = cls.pluginName || cls.shortName, arr;
+            if (!element) {
+                dev.warn('can/control/control.js: Creating an instance of a named control without passing an element');
+                element = vDom().createElement('div');
+            }
             this.element = cls.convertElement(element);
             if (pluginname && pluginname !== 'can_control') {
                 className.add.call(element, pluginname);
@@ -2868,7 +2873,9 @@ define('can-control', function (require, exports, module) {
                 className.remove.call(this.element, pluginName);
             }
             controls = domData.get.call(this.element, 'controls');
-            controls.splice(controls.indexOf(this), 1);
+            if (controls) {
+                controls.splice(controls.indexOf(this), 1);
+            }
             canEvent.dispatch.call(this, 'destroyed');
             this.element = null;
         }
@@ -15378,7 +15385,7 @@ define('can-connect/can/model/model', function (require, exports, module) {
     }
     module.exports = CanModel;
 });
-/*can-jquery@3.0.4#can-jquery*/
+/*can-jquery@3.0.5#can-jquery*/
 define('can-jquery', function (require, exports, module) {
     var $ = require('jquery');
     var ns = require('can-util/namespace');
@@ -15393,6 +15400,7 @@ define('can-jquery', function (require, exports, module) {
     var mutate = require('can-util/dom/mutate/mutate');
     var setImmediate = require('can-util/js/set-immediate/set-immediate');
     var canViewModel = require('can-view-model');
+    var MO = require('can-util/dom/mutation-observer/mutation-observer');
     module.exports = ns.$ = $;
     var specialEvents = {};
     var nativeDispatchEvents = { focus: true };
@@ -15418,9 +15426,13 @@ define('can-jquery', function (require, exports, module) {
                         ev.eventArguments = slice.call(arguments, 1);
                         domEvents.removeEventListener.call(element, event, handler);
                         var self = this, args = arguments;
-                        return setImmediate(function () {
+                        if (MO()) {
                             return callback.apply(self, args);
-                        });
+                        } else {
+                            return setImmediate(function () {
+                                return callback.apply(self, args);
+                            });
+                        }
                     };
                     domData.set.call(callback, EVENT_HANDLER, handler);
                 }
