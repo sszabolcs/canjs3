@@ -103,7 +103,7 @@
 		};
 	});
 }
-)({"jquery":"jquery","can-util/namespace":"can","kefir":"Kefir","validate.js":"validate"},window,function(__$source__, __$global__) { // jshint ignore:line
+)({"jquery":"jQuery","can-util/namespace":"can","kefir":"Kefir","validate.js":"validate"},window,function(__$source__, __$global__) { // jshint ignore:line
 	eval("(function() { " + __$source__ + " \n }).call(__$global__);");
 }
 )
