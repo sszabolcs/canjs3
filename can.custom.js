@@ -9157,6 +9157,534 @@ define('can-stache', function (require, exports, module) {
     };
     module.exports = namespace.stache = stache;
 });
+/*can-util@3.3.5#js/string-to-any/string-to-any*/
+define('can-util/js/string-to-any/string-to-any', function (require, exports, module) {
+    module.exports = function (str) {
+        switch (str) {
+        case 'NaN':
+        case 'Infinity':
+            return +str;
+        case 'null':
+            return null;
+        case 'undefined':
+            return undefined;
+        case 'true':
+        case 'false':
+            return str === 'true';
+        default:
+            var val = +str;
+            if (!isNaN(val)) {
+                return val;
+            } else {
+                return str;
+            }
+        }
+    };
+});
+/*can-stache-converters@3.0.7#can-stache-converters*/
+define('can-stache-converters', function (require, exports, module) {
+    var stache = require('can-stache');
+    var stringToAny = require('can-util/js/string-to-any/string-to-any');
+    require('can-stache-bindings');
+    stache.registerConverter('boolean-to-inList', {
+        get: function (item, list) {
+            if (!list) {
+                return false;
+            } else {
+                return list.indexOf(item) !== -1;
+            }
+        },
+        set: function (newVal, item, list) {
+            if (!list) {
+                return;
+            }
+            if (!newVal) {
+                var idx = list.indexOf(item);
+                if (idx !== -1) {
+                    list.splice(idx, 1);
+                }
+            } else {
+                list.push(item);
+            }
+        }
+    });
+    stache.registerConverter('string-to-any', {
+        get: function (compute) {
+            return '' + compute();
+        },
+        set: function (newVal, compute) {
+            var converted = stringToAny(newVal);
+            compute(converted);
+        }
+    });
+    stache.registerConverter('not', {
+        get: function (compute) {
+            return !compute();
+        },
+        set: function (newVal, compute) {
+            compute(!newVal);
+        }
+    });
+    stache.registerConverter('index-to-selected', {
+        get: function (item, list) {
+            var val = item.isComputed ? item() : item;
+            var idx = list.indexOf(val);
+            return idx;
+        },
+        set: function (idx, item, list) {
+            var newVal = list[idx];
+            if (newVal !== -1 && item.isComputed) {
+                item(newVal);
+            }
+        }
+    });
+    stache.registerConverter('either-or', {
+        get: function (chosen, a, b) {
+            return b !== chosen();
+        },
+        set: function (newVal, chosen, a, b) {
+            chosen(newVal ? a : b);
+        }
+    });
+    stache.registerConverter('equal', {
+        get: function (compute, comparer) {
+            var val = compute && compute.isComputed ? compute() : compute;
+            return val === comparer;
+        },
+        set: function (b, compute, comparer) {
+            if (b) {
+                compute(comparer);
+            }
+        }
+    });
+});
+/*can-connect@1.3.8#connect*/
+define('can-connect/connect', function (require, exports, module) {
+    var assign = require('can-util/js/assign/assign');
+    var connect = function (behaviors, options) {
+        behaviors = behaviors.map(function (behavior, index) {
+            var sortedIndex = -1;
+            if (typeof behavior === 'string') {
+                sortedIndex = connect.order.indexOf(behavior);
+                behavior = behaviorsMap[behavior];
+            } else if (behavior.isBehavior) {
+                sortedIndex = connect.order.indexOf(behavior.behaviorName);
+            } else {
+                behavior = connect.behavior(behavior);
+            }
+            return {
+                originalIndex: index,
+                sortedIndex: sortedIndex,
+                behavior: behavior
+            };
+        }).sort(function (b1, b2) {
+            if (~b1.sortedIndex && ~b2.sortedIndex) {
+                return b1.sortedIndex - b2.sortedIndex;
+            }
+            return b1.originalIndex - b2.originalIndex;
+        });
+        behaviors = behaviors.map(function (b) {
+            return b.behavior;
+        });
+        var behavior = connect.base(connect.behavior('options', function () {
+            return options;
+        })());
+        behaviors.forEach(function (behave) {
+            behavior = behave(behavior);
+        });
+        if (behavior.init) {
+            behavior.init();
+        }
+        return behavior;
+    };
+    connect.order = [
+        'data/localstorage-cache',
+        'data/url',
+        'data/parse',
+        'cache-requests',
+        'data/combine-requests',
+        'constructor',
+        'constructor/store',
+        'can/map',
+        'can/ref',
+        'fall-through-cache',
+        'data/worker',
+        'real-time',
+        'data/callbacks-cache',
+        'data/callbacks',
+        'constructor/callbacks-once'
+    ];
+    connect.behavior = function (name, behavior) {
+        if (typeof name !== 'string') {
+            behavior = name;
+            name = undefined;
+        }
+        var behaviorMixin = function (base) {
+            var Behavior = function () {
+            };
+            Behavior.name = name;
+            Behavior.prototype = base;
+            var newBehavior = new Behavior();
+            var res = typeof behavior === 'function' ? behavior.apply(newBehavior, arguments) : behavior;
+            assign(newBehavior, res);
+            newBehavior.__behaviorName = name;
+            return newBehavior;
+        };
+        if (name) {
+            behaviorMixin.behaviorName = name;
+            behaviorsMap[name] = behaviorMixin;
+        }
+        behaviorMixin.isBehavior = true;
+        return behaviorMixin;
+    };
+    var behaviorsMap = {};
+    module.exports = connect;
+});
+/*can-connect@1.3.8#base/base*/
+define('can-connect/base/base', function (require, exports, module) {
+    var connect = require('can-connect/connect');
+    module.exports = connect.behavior('base', function (baseConnection) {
+        return {
+            id: function (instance) {
+                var ids = [], algebra = this.algebra;
+                if (algebra && algebra.clauses && algebra.clauses.id) {
+                    for (var prop in algebra.clauses.id) {
+                        ids.push(instance[prop]);
+                    }
+                }
+                if (this.idProp && !ids.length) {
+                    ids.push(instance[this.idProp]);
+                }
+                if (!ids.length) {
+                    ids.push(instance.id);
+                }
+                return ids.length > 1 ? ids.join('@|@') : ids[0];
+            },
+            idProp: baseConnection.idProp || 'id',
+            listSet: function (list) {
+                return list[this.listSetProp];
+            },
+            listSetProp: '__listSet',
+            init: function () {
+            }
+        };
+    });
+});
+/*can-connect@1.3.8#can-connect*/
+define('can-connect', function (require, exports, module) {
+    var connect = require('can-connect/connect');
+    var base = require('can-connect/base/base');
+    var ns = require('can-namespace');
+    connect.base = base;
+    module.exports = ns.connect = connect;
+});
+/*can-connect@1.3.8#can/map/map*/
+define('can-connect/can/map/map', function (require, exports, module) {
+    'use strict';
+    var each = require('can-util/js/each/each');
+    var connect = require('can-connect');
+    var canBatch = require('can-event/batch/batch');
+    var canEvent = require('can-event');
+    var Observation = require('can-observation');
+    var isPlainObject = require('can-util/js/is-plain-object/is-plain-object');
+    var isArray = require('can-util/js/is-array/is-array');
+    var types = require('can-types');
+    var each = require('can-util/js/each/each');
+    var isFunction = require('can-util/js/is-function/is-function');
+    var dev = require('can-util/js/dev/dev');
+    var setExpando = function (map, prop, value) {
+        if ('attr' in map) {
+            map[prop] = value;
+        } else {
+            map._data[prop] = value;
+        }
+    };
+    var getExpando = function (map, prop) {
+        if ('attr' in map) {
+            return map[prop];
+        } else {
+            return map._data[prop];
+        }
+    };
+    var canMapBehavior = connect.behavior('can/map', function (baseConnection) {
+        var behavior = {
+            init: function () {
+                this.Map = this.Map || types.DefaultMap.extend({});
+                this.List = this.List || types.DefaultList.extend({});
+                overwrite(this, this.Map, mapOverwrites, mapStaticOverwrites);
+                overwrite(this, this.List, listPrototypeOverwrites, listStaticOverwrites);
+                baseConnection.init.apply(this, arguments);
+            },
+            id: function (instance) {
+                if (!isPlainObject(instance)) {
+                    var ids = [], algebra = this.algebra;
+                    if (algebra && algebra.clauses && algebra.clauses.id) {
+                        for (var prop in algebra.clauses.id) {
+                            ids.push(readObservabe(instance, prop));
+                        }
+                    }
+                    if (this.idProp && !ids.length) {
+                        ids.push(readObservabe(instance, this.idProp));
+                    }
+                    if (!ids.length) {
+                        ids.push(readObservabe(instance, 'id'));
+                    }
+                    return ids.length > 1 ? ids.join('@|@') : ids[0];
+                } else {
+                    return baseConnection.id(instance);
+                }
+            },
+            serializeInstance: function (instance) {
+                return instance.serialize();
+            },
+            serializeList: function (list) {
+                return list.serialize();
+            },
+            instance: function (props) {
+                var _Map = this.Map || types.DefaultMap;
+                return new _Map(props);
+            },
+            list: function (listData, set) {
+                var _List = this.List || this.Map && this.Map.List || types.DefaultList;
+                var list = new _List(listData.data);
+                each(listData, function (val, prop) {
+                    if (prop !== 'data') {
+                        list[list.set ? 'set' : 'attr'](prop, val);
+                    }
+                });
+                list.__listSet = set;
+                return list;
+            },
+            updatedList: function () {
+                canBatch.start();
+                var res = baseConnection.updatedList.apply(this, arguments);
+                canBatch.stop();
+                return res;
+            },
+            save: function (instance) {
+                setExpando(instance, '_saving', true);
+                canEvent.dispatch.call(instance, '_saving', [
+                    true,
+                    false
+                ]);
+                var done = function () {
+                    setExpando(instance, '_saving', false);
+                    canEvent.dispatch.call(instance, '_saving', [
+                        false,
+                        true
+                    ]);
+                };
+                var base = baseConnection.save.apply(this, arguments);
+                base.then(done, done);
+                return base;
+            },
+            destroy: function (instance) {
+                setExpando(instance, '_destroying', true);
+                canEvent.dispatch.call(instance, '_destroying', [
+                    true,
+                    false
+                ]);
+                var done = function () {
+                    setExpando(instance, '_destroying', false);
+                    canEvent.dispatch.call(instance, '_destroying', [
+                        false,
+                        true
+                    ]);
+                };
+                var base = baseConnection.destroy.apply(this, arguments);
+                base.then(done, done);
+                return base;
+            }
+        };
+        each([
+            'created',
+            'updated',
+            'destroyed'
+        ], function (funcName) {
+            behavior[funcName + 'Instance'] = function (instance, props) {
+                if (props && typeof props === 'object') {
+                    if ('set' in instance) {
+                        instance.set(isFunction(props.get) ? props.get() : props, this.constructor.removeAttr || false);
+                    } else if ('attr' in instance) {
+                        instance.attr(isFunction(props.attr) ? props.attr() : props, this.constructor.removeAttr || false);
+                    } else {
+                        canBatch.start();
+                        each(props, function (value, prop) {
+                            instance[prop] = value;
+                        });
+                        canBatch.stop();
+                    }
+                }
+                canMapBehavior.callbackInstanceEvents(funcName, instance);
+            };
+        });
+        return behavior;
+    });
+    canMapBehavior.callbackInstanceEvents = function (funcName, instance) {
+        var constructor = instance.constructor;
+        canEvent.dispatch.call(instance, {
+            type: funcName,
+            target: instance
+        });
+        if (this.id) {
+            dev.log('can-connect/can/map/map.js - ' + (constructor.shortName || this.name) + ' ' + this.id(instance) + ' ' + funcName);
+        }
+        canEvent.dispatch.call(constructor, funcName, [instance]);
+    };
+    var callCanReadingOnIdRead = true;
+    var mapStaticOverwrites = {
+        getList: function (base, connection) {
+            return function (set) {
+                return connection.getList(set);
+            };
+        },
+        findAll: function (base, connection) {
+            return function (set) {
+                return connection.getList(set);
+            };
+        },
+        get: function (base, connection) {
+            return function (params) {
+                return connection.get(params);
+            };
+        },
+        findOne: function (base, connection) {
+            return function (params) {
+                return connection.get(params);
+            };
+        }
+    };
+    var mapOverwrites = {
+        _eventSetup: function (base, connection) {
+            return function () {
+                callCanReadingOnIdRead = false;
+                connection.addInstanceReference(this);
+                callCanReadingOnIdRead = true;
+                return base.apply(this, arguments);
+            };
+        },
+        _eventTeardown: function (base, connection) {
+            return function () {
+                callCanReadingOnIdRead = false;
+                connection.deleteInstanceReference(this);
+                callCanReadingOnIdRead = true;
+                return base.apply(this, arguments);
+            };
+        },
+        ___set: function (base, connection) {
+            return function (prop, val) {
+                base.apply(this, arguments);
+                if (prop === connection.idProp && this._bindings) {
+                    connection.addInstanceReference(this);
+                }
+            };
+        },
+        isNew: function (base, connection) {
+            return function () {
+                var id = connection.id(this);
+                return !(id || id === 0);
+            };
+        },
+        isSaving: function (base, connection) {
+            return function () {
+                Observation.add(this, '_saving');
+                return !!getExpando(this, '_saving');
+            };
+        },
+        isDestroying: function (base, connection) {
+            return function () {
+                Observation.add(this, '_destroying');
+                return !!getExpando(this, '_destroying');
+            };
+        },
+        save: function (base, connection) {
+            return function (success, error) {
+                var promise = connection.save(this);
+                promise.then(success, error);
+                return promise;
+            };
+        },
+        destroy: function (base, connection) {
+            return function (success, error) {
+                var promise;
+                if (this.isNew()) {
+                    promise = Promise.resolve(this);
+                    connection.destroyedInstance(this, {});
+                } else {
+                    promise = connection.destroy(this);
+                }
+                promise.then(success, error);
+                return promise;
+            };
+        }
+    };
+    var listPrototypeOverwrites = {
+        setup: function (base, connection) {
+            return function (params) {
+                if (isPlainObject(params) && !isArray(params)) {
+                    this.__listSet = params;
+                    base.apply(this);
+                    this.replace(types.isPromise(params) ? params : connection.getList(params));
+                } else {
+                    base.apply(this, arguments);
+                }
+            };
+        },
+        _eventSetup: function (base, connection) {
+            return function () {
+                connection.addListReference(this);
+                if (base) {
+                    return base.apply(this, arguments);
+                }
+            };
+        },
+        _eventTeardown: function (base, connection) {
+            return function () {
+                connection.deleteListReference(this);
+                if (base) {
+                    return base.apply(this, arguments);
+                }
+            };
+        }
+    };
+    var listStaticOverwrites = {
+        _bubbleRule: function (base, connection) {
+            return function (eventName, list) {
+                var bubbleRules = base(eventName, list);
+                bubbleRules.push('destroyed');
+                return bubbleRules;
+            };
+        }
+    };
+    var readObservabe = function (instance, prop) {
+        if ('__get' in instance) {
+            if (callCanReadingOnIdRead) {
+                Observation.add(instance, prop);
+            }
+            return instance.__get(prop);
+        } else {
+            if (callCanReadingOnIdRead) {
+                return instance[prop];
+            } else {
+                return Observation.ignore(function () {
+                    return instance[prop];
+                })();
+            }
+        }
+    };
+    var overwrite = function (connection, Constructor, prototype, statics) {
+        var prop;
+        for (prop in prototype) {
+            Constructor.prototype[prop] = prototype[prop](Constructor.prototype[prop], connection);
+        }
+        if (statics) {
+            for (prop in statics) {
+                Constructor[prop] = statics[prop](Constructor[prop], connection);
+            }
+        }
+    };
+    module.exports = canMapBehavior;
+});
 /*can-util@3.3.5#js/defaults/defaults*/
 define('can-util/js/defaults/defaults', function (require, exports, module) {
     module.exports = function (target) {
@@ -11877,126 +12405,6 @@ define('can-set', function (require, exports, module) {
     set.helpers = require('can-set/src/helpers');
     set.clause = clause;
     module.exports = ns.set = set;
-});
-/*can-connect@1.3.8#connect*/
-define('can-connect/connect', function (require, exports, module) {
-    var assign = require('can-util/js/assign/assign');
-    var connect = function (behaviors, options) {
-        behaviors = behaviors.map(function (behavior, index) {
-            var sortedIndex = -1;
-            if (typeof behavior === 'string') {
-                sortedIndex = connect.order.indexOf(behavior);
-                behavior = behaviorsMap[behavior];
-            } else if (behavior.isBehavior) {
-                sortedIndex = connect.order.indexOf(behavior.behaviorName);
-            } else {
-                behavior = connect.behavior(behavior);
-            }
-            return {
-                originalIndex: index,
-                sortedIndex: sortedIndex,
-                behavior: behavior
-            };
-        }).sort(function (b1, b2) {
-            if (~b1.sortedIndex && ~b2.sortedIndex) {
-                return b1.sortedIndex - b2.sortedIndex;
-            }
-            return b1.originalIndex - b2.originalIndex;
-        });
-        behaviors = behaviors.map(function (b) {
-            return b.behavior;
-        });
-        var behavior = connect.base(connect.behavior('options', function () {
-            return options;
-        })());
-        behaviors.forEach(function (behave) {
-            behavior = behave(behavior);
-        });
-        if (behavior.init) {
-            behavior.init();
-        }
-        return behavior;
-    };
-    connect.order = [
-        'data/localstorage-cache',
-        'data/url',
-        'data/parse',
-        'cache-requests',
-        'data/combine-requests',
-        'constructor',
-        'constructor/store',
-        'can/map',
-        'can/ref',
-        'fall-through-cache',
-        'data/worker',
-        'real-time',
-        'data/callbacks-cache',
-        'data/callbacks',
-        'constructor/callbacks-once'
-    ];
-    connect.behavior = function (name, behavior) {
-        if (typeof name !== 'string') {
-            behavior = name;
-            name = undefined;
-        }
-        var behaviorMixin = function (base) {
-            var Behavior = function () {
-            };
-            Behavior.name = name;
-            Behavior.prototype = base;
-            var newBehavior = new Behavior();
-            var res = typeof behavior === 'function' ? behavior.apply(newBehavior, arguments) : behavior;
-            assign(newBehavior, res);
-            newBehavior.__behaviorName = name;
-            return newBehavior;
-        };
-        if (name) {
-            behaviorMixin.behaviorName = name;
-            behaviorsMap[name] = behaviorMixin;
-        }
-        behaviorMixin.isBehavior = true;
-        return behaviorMixin;
-    };
-    var behaviorsMap = {};
-    module.exports = connect;
-});
-/*can-connect@1.3.8#base/base*/
-define('can-connect/base/base', function (require, exports, module) {
-    var connect = require('can-connect/connect');
-    module.exports = connect.behavior('base', function (baseConnection) {
-        return {
-            id: function (instance) {
-                var ids = [], algebra = this.algebra;
-                if (algebra && algebra.clauses && algebra.clauses.id) {
-                    for (var prop in algebra.clauses.id) {
-                        ids.push(instance[prop]);
-                    }
-                }
-                if (this.idProp && !ids.length) {
-                    ids.push(instance[this.idProp]);
-                }
-                if (!ids.length) {
-                    ids.push(instance.id);
-                }
-                return ids.length > 1 ? ids.join('@|@') : ids[0];
-            },
-            idProp: baseConnection.idProp || 'id',
-            listSet: function (list) {
-                return list[this.listSetProp];
-            },
-            listSetProp: '__listSet',
-            init: function () {
-            }
-        };
-    });
-});
-/*can-connect@1.3.8#can-connect*/
-define('can-connect', function (require, exports, module) {
-    var connect = require('can-connect/connect');
-    var base = require('can-connect/base/base');
-    var ns = require('can-namespace');
-    connect.base = base;
-    module.exports = ns.connect = connect;
 });
 /*can-fixture@1.0.13#helpers/getid*/
 define('can-fixture/helpers/getid', function (require, exports, module) {
@@ -15607,9 +16015,11 @@ define('can/legacy', function (require, exports, module) {
     require('can-route');
     require('can-stache');
     require('can-stache-bindings');
+    require('can-stache-converters');
     require('can-compute');
     require('can-event');
     require('can-view-model');
+    require('can-connect/can/map/map');
     require('can-define/map/map');
     require('can-define/list/list');
     require('can-set');
