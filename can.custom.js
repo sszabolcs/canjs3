@@ -103,7 +103,7 @@
 		};
 	});
 }
-)({"jquery":"jQuery","can-util/namespace":"can","kefir":"Kefir","validate.js":"validate"},window,function(__$source__, __$global__) { // jshint ignore:line
+)({"jquery":"jquery","can-util/namespace":"can","kefir":"Kefir","validate.js":"validate"},window,function(__$source__, __$global__) { // jshint ignore:line
 	eval("(function() { " + __$source__ + " \n }).call(__$global__);");
 }
 )
@@ -111,11 +111,11 @@
 define('can-namespace', function (require, exports, module) {
     module.exports = {};
 });
-/*can-util@3.3.5#namespace*/
+/*can-util@3.3.7#namespace*/
 define('can-util/namespace', function (require, exports, module) {
     module.exports = require('can-namespace');
 });
-/*can-util@3.3.5#js/assign/assign*/
+/*can-util@3.3.7#js/assign/assign*/
 define('can-util/js/assign/assign', function (require, exports, module) {
     module.exports = function (d, s) {
         for (var prop in s) {
@@ -124,13 +124,13 @@ define('can-util/js/assign/assign', function (require, exports, module) {
         return d;
     };
 });
-/*can-util@3.3.5#js/is-array/is-array*/
+/*can-util@3.3.7#js/is-array/is-array*/
 define('can-util/js/is-array/is-array', function (require, exports, module) {
     module.exports = function (arr) {
         return Array.isArray(arr);
     };
 });
-/*can-util@3.3.5#js/is-function/is-function*/
+/*can-util@3.3.7#js/is-function/is-function*/
 define('can-util/js/is-function/is-function', function (require, exports, module) {
     var isFunction = function () {
         if (typeof document !== 'undefined' && typeof document.getElementsByTagName('body') === 'function') {
@@ -144,7 +144,7 @@ define('can-util/js/is-function/is-function', function (require, exports, module
     }();
     module.exports = isFunction;
 });
-/*can-util@3.3.5#js/is-plain-object/is-plain-object*/
+/*can-util@3.3.7#js/is-plain-object/is-plain-object*/
 define('can-util/js/is-plain-object/is-plain-object', function (require, exports, module) {
     var core_hasOwn = Object.prototype.hasOwnProperty;
     function isWindow(obj) {
@@ -168,7 +168,7 @@ define('can-util/js/is-plain-object/is-plain-object', function (require, exports
     }
     module.exports = isPlainObject;
 });
-/*can-util@3.3.5#js/deep-assign/deep-assign*/
+/*can-util@3.3.7#js/deep-assign/deep-assign*/
 define('can-util/js/deep-assign/deep-assign', function (require, exports, module) {
     var isArray = require('can-util/js/is-array/is-array');
     var isFunction = require('can-util/js/is-function/is-function');
@@ -208,7 +208,7 @@ define('can-util/js/deep-assign/deep-assign', function (require, exports, module
     }
     module.exports = deepAssign;
 });
-/*can-util@3.3.5#js/log/log*/
+/*can-util@3.3.7#js/log/log*/
 define('can-util/js/log/log', function (require, exports, module) {
     exports.warnTimeout = 5000;
     exports.logLevel = 0;
@@ -255,7 +255,7 @@ define('can-util/js/log/log', function (require, exports, module) {
         }
     };
 });
-/*can-util@3.3.5#js/dev/dev*/
+/*can-util@3.3.7#js/dev/dev*/
 define('can-util/js/dev/dev', function (require, exports, module) {
     var canLog = require('can-util/js/log/log');
     module.exports = {
@@ -270,7 +270,7 @@ define('can-util/js/dev/dev', function (require, exports, module) {
         _logger: canLog._logger
     };
 });
-/*can-util@3.3.5#js/is-array-like/is-array-like*/
+/*can-util@3.3.7#js/is-array-like/is-array-like*/
 define('can-util/js/is-array-like/is-array-like', function (require, exports, module) {
     function isArrayLike(obj) {
         var type = typeof obj;
@@ -332,14 +332,14 @@ define('can-types', function (require, exports, module) {
         module.exports = namespace.types = types;
     }
 });
-/*can-util@3.3.5#js/is-iterable/is-iterable*/
+/*can-util@3.3.7#js/is-iterable/is-iterable*/
 define('can-util/js/is-iterable/is-iterable', function (require, exports, module) {
     var types = require('can-types');
     module.exports = function (obj) {
         return obj && !!obj[types.iterator];
     };
 });
-/*can-util@3.3.5#js/each/each*/
+/*can-util@3.3.7#js/each/each*/
 define('can-util/js/each/each', function (require, exports, module) {
     var isArrayLike = require('can-util/js/is-array-like/is-array-like');
     var has = Object.prototype.hasOwnProperty;
@@ -374,7 +374,7 @@ define('can-util/js/each/each', function (require, exports, module) {
     }
     module.exports = each;
 });
-/*can-util@3.3.5#js/make-array/make-array*/
+/*can-util@3.3.7#js/make-array/make-array*/
 define('can-util/js/make-array/make-array', function (require, exports, module) {
     var each = require('can-util/js/each/each');
     var isArrayLike = require('can-util/js/is-array-like/is-array-like');
@@ -391,13 +391,13 @@ define('can-util/js/make-array/make-array', function (require, exports, module) 
     }
     module.exports = makeArray;
 });
-/*can-util@3.3.5#js/is-container/is-container*/
+/*can-util@3.3.7#js/is-container/is-container*/
 define('can-util/js/is-container/is-container', function (require, exports, module) {
     module.exports = function (current) {
         return /^f|^o/.test(typeof current);
     };
 });
-/*can-util@3.3.5#js/get/get*/
+/*can-util@3.3.7#js/get/get*/
 define('can-util/js/get/get', function (require, exports, module) {
     var isContainer = require('can-util/js/is-container/is-container');
     function get(obj, name) {
@@ -414,7 +414,7 @@ define('can-util/js/get/get', function (require, exports, module) {
     }
     module.exports = get;
 });
-/*can-util@3.3.5#js/string/string*/
+/*can-util@3.3.7#js/string/string*/
 define('can-util/js/string/string', function (require, exports, module) {
     var get = require('can-util/js/get/get');
     var isContainer = require('can-util/js/is-container/is-container');
@@ -717,7 +717,7 @@ define('can-construct', function (require, exports, module) {
     };
     module.exports = namespace.Construct = Construct;
 });
-/*can-util@3.3.5#js/is-empty-object/is-empty-object*/
+/*can-util@3.3.7#js/is-empty-object/is-empty-object*/
 define('can-util/js/is-empty-object/is-empty-object', function (require, exports, module) {
     module.exports = function (obj) {
         for (var prop in obj) {
@@ -726,7 +726,7 @@ define('can-util/js/is-empty-object/is-empty-object', function (require, exports
         return true;
     };
 });
-/*can-util@3.3.5#dom/data/core*/
+/*can-util@3.3.7#dom/data/core*/
 define('can-util/dom/data/core', function (require, exports, module) {
     var isEmptyObject = require('can-util/js/is-empty-object/is-empty-object');
     var data = {};
@@ -779,7 +779,7 @@ define('can-util/dom/data/core', function (require, exports, module) {
         delete: deleteNode
     };
 });
-/*can-util@3.3.5#js/global/global*/
+/*can-util@3.3.7#js/global/global*/
 define('can-util/js/global/global', function (require, exports, module) {
     (function (global) {
         var GLOBAL;
@@ -797,7 +797,7 @@ define('can-util/js/global/global', function (require, exports, module) {
         return this;
     }()));
 });
-/*can-util@3.3.5#dom/document/document*/
+/*can-util@3.3.7#dom/document/document*/
 define('can-util/dom/document/document', function (require, exports, module) {
     (function (global) {
         var global = require('can-util/js/global/global');
@@ -812,7 +812,7 @@ define('can-util/dom/document/document', function (require, exports, module) {
         return this;
     }()));
 });
-/*can-util@3.3.5#dom/mutation-observer/mutation-observer*/
+/*can-util@3.3.7#dom/mutation-observer/mutation-observer*/
 define('can-util/dom/mutation-observer/mutation-observer', function (require, exports, module) {
     (function (global) {
         var global = require('can-util/js/global/global')();
@@ -844,7 +844,7 @@ define('can-cid', function (require, exports, module) {
         module.exports = namespace.cid = cid;
     }
 });
-/*can-util@3.3.5#js/cid/get-cid*/
+/*can-util@3.3.7#js/cid/get-cid*/
 define('can-util/js/cid/get-cid', function (require, exports, module) {
     var CID = require('can-cid');
     var domDataCore = require('can-util/dom/data/core');
@@ -858,7 +858,7 @@ define('can-util/js/cid/get-cid', function (require, exports, module) {
         }
     };
 });
-/*can-util@3.3.5#js/cid-set/cid-set*/
+/*can-util@3.3.7#js/cid-set/cid-set*/
 define('can-util/js/cid-set/cid-set', function (require, exports, module) {
     (function (global) {
         var GLOBAL = require('can-util/js/global/global');
@@ -905,7 +905,7 @@ define('can-util/js/cid-set/cid-set', function (require, exports, module) {
         return this;
     }()));
 });
-/*can-util@3.3.5#dom/mutation-observer/document/document*/
+/*can-util@3.3.7#dom/mutation-observer/document/document*/
 define('can-util/dom/mutation-observer/document/document', function (require, exports, module) {
     (function (global) {
         var getDocument = require('can-util/dom/document/document');
@@ -1047,7 +1047,7 @@ define('can-util/dom/mutation-observer/document/document', function (require, ex
         return this;
     }()));
 });
-/*can-util@3.3.5#dom/data/data*/
+/*can-util@3.3.7#dom/data/data*/
 define('can-util/dom/data/data', function (require, exports, module) {
     var domDataCore = require('can-util/dom/data/core');
     var mutationDocument = require('can-util/dom/mutation-observer/document/document');
@@ -1076,7 +1076,7 @@ define('can-util/dom/data/data', function (require, exports, module) {
         delete: deleteNode
     };
 });
-/*can-util@3.3.5#dom/class-name/class-name*/
+/*can-util@3.3.7#dom/class-name/class-name*/
 define('can-util/dom/class-name/class-name', function (require, exports, module) {
     var has = function (className) {
         if (this.classList) {
@@ -1104,7 +1104,7 @@ define('can-util/dom/class-name/class-name', function (require, exports, module)
         }
     };
 });
-/*can-util@3.3.5#js/is-browser-window/is-browser-window*/
+/*can-util@3.3.7#js/is-browser-window/is-browser-window*/
 define('can-util/js/is-browser-window/is-browser-window', function (require, exports, module) {
     (function (global) {
         module.exports = function () {
@@ -1114,7 +1114,7 @@ define('can-util/js/is-browser-window/is-browser-window', function (require, exp
         return this;
     }()));
 });
-/*can-util@3.3.5#dom/events/events*/
+/*can-util@3.3.7#dom/events/events*/
 define('can-util/dom/events/events', function (require, exports, module) {
     var assign = require('can-util/js/assign/assign');
     var _document = require('can-util/dom/document/document');
@@ -1177,14 +1177,14 @@ define('can-util/dom/events/events', function (require, exports, module) {
         }
     }());
 });
-/*can-util@3.3.5#dom/dispatch/dispatch*/
+/*can-util@3.3.7#dom/dispatch/dispatch*/
 define('can-util/dom/dispatch/dispatch', function (require, exports, module) {
     var domEvents = require('can-util/dom/events/events');
     module.exports = function () {
         return domEvents.dispatch.apply(this, arguments);
     };
 });
-/*can-util@3.3.5#dom/matches/matches*/
+/*can-util@3.3.7#dom/matches/matches*/
 define('can-util/dom/matches/matches', function (require, exports, module) {
     var matchesMethod = function (element) {
         return element.matches || element.webkitMatchesSelector || element.webkitMatchesSelector || element.mozMatchesSelector || element.msMatchesSelector || element.oMatchesSelector;
@@ -1194,7 +1194,7 @@ define('can-util/dom/matches/matches', function (require, exports, module) {
         return method ? method.apply(this, arguments) : false;
     };
 });
-/*can-util@3.3.5#dom/events/delegate/delegate*/
+/*can-util@3.3.7#dom/events/delegate/delegate*/
 define('can-util/dom/events/delegate/delegate', function (require, exports, module) {
     var domEvents = require('can-util/dom/events/events');
     var domData = require('can-util/dom/data/data');
@@ -1461,7 +1461,7 @@ define('can-event', function (require, exports, module) {
     });
     module.exports = namespace.event = canEvent;
 });
-/*can-util@3.3.5#js/last/last*/
+/*can-util@3.3.7#js/last/last*/
 define('can-util/js/last/last', function (require, exports, module) {
     module.exports = function (arr) {
         return arr && arr[arr.length - 1];
@@ -3828,7 +3828,7 @@ define('can-view-parser', function (require, exports, module) {
     };
     module.exports = namespace.HTMLParser = HTMLParser;
 });
-/*can-util@3.3.5#js/set-immediate/set-immediate*/
+/*can-util@3.3.7#js/set-immediate/set-immediate*/
 define('can-util/js/set-immediate/set-immediate', function (require, exports, module) {
     (function (global) {
         var global = require('can-util/js/global/global')();
@@ -3839,7 +3839,7 @@ define('can-util/js/set-immediate/set-immediate', function (require, exports, mo
         return this;
     }()));
 });
-/*can-util@3.3.5#dom/child-nodes/child-nodes*/
+/*can-util@3.3.7#dom/child-nodes/child-nodes*/
 define('can-util/dom/child-nodes/child-nodes', function (require, exports, module) {
     function childNodes(node) {
         var childNodes = node.childNodes;
@@ -3857,13 +3857,13 @@ define('can-util/dom/child-nodes/child-nodes', function (require, exports, modul
     }
     module.exports = childNodes;
 });
-/*can-util@3.3.5#dom/contains/contains*/
+/*can-util@3.3.7#dom/contains/contains*/
 define('can-util/dom/contains/contains', function (require, exports, module) {
     module.exports = function (child) {
         return this.contains(child);
     };
 });
-/*can-util@3.3.5#dom/mutate/mutate*/
+/*can-util@3.3.7#dom/mutate/mutate*/
 define('can-util/dom/mutate/mutate', function (require, exports, module) {
     var makeArray = require('can-util/js/make-array/make-array');
     var setImmediate = require('can-util/js/set-immediate/set-immediate');
@@ -4001,7 +4001,7 @@ define('can-util/dom/mutate/mutate', function (require, exports, module) {
         }
     };
 });
-/*can-util@3.3.5#js/cid-map/cid-map*/
+/*can-util@3.3.7#js/cid-map/cid-map*/
 define('can-util/js/cid-map/cid-map', function (require, exports, module) {
     (function (global) {
         var GLOBAL = require('can-util/js/global/global');
@@ -4251,7 +4251,7 @@ define('can-view-nodelist', function (require, exports, module) {
     };
     module.exports = namespace.nodeLists = nodeLists;
 });
-/*can-util@3.3.5#dom/fragment/fragment*/
+/*can-util@3.3.7#dom/fragment/fragment*/
 define('can-util/dom/fragment/fragment', function (require, exports, module) {
     var getDocument = require('can-util/dom/document/document'), childNodes = require('can-util/dom/child-nodes/child-nodes');
     var fragmentRE = /^\s*<(\w+)[^>]*>/, toString = {}.toString, fragment = function (html, name, doc) {
@@ -4304,7 +4304,7 @@ define('can-util/dom/fragment/fragment', function (require, exports, module) {
     };
     module.exports = buildFragment;
 });
-/*can-util@3.3.5#dom/frag/frag*/
+/*can-util@3.3.7#dom/frag/frag*/
 define('can-util/dom/frag/frag', function (require, exports, module) {
     var getDocument = require('can-util/dom/document/document');
     var fragment = require('can-util/dom/fragment/fragment');
@@ -4344,14 +4344,14 @@ define('can-util/dom/frag/frag', function (require, exports, module) {
     };
     module.exports = makeFrag;
 });
-/*can-util@3.3.5#dom/is-of-global-document/is-of-global-document*/
+/*can-util@3.3.7#dom/is-of-global-document/is-of-global-document*/
 define('can-util/dom/is-of-global-document/is-of-global-document', function (require, exports, module) {
     var getDocument = require('can-util/dom/document/document');
     module.exports = function (el) {
         return (el.ownerDocument || el) === getDocument();
     };
 });
-/*can-util@3.3.5#dom/events/make-mutation-event/make-mutation-event*/
+/*can-util@3.3.7#dom/events/make-mutation-event/make-mutation-event*/
 define('can-util/dom/events/make-mutation-event/make-mutation-event', function (require, exports, module) {
     (function (global) {
         var events = require('can-util/dom/events/events');
@@ -4360,7 +4360,7 @@ define('can-util/dom/events/make-mutation-event/make-mutation-event', function (
         var domDispatch = require('can-util/dom/dispatch/dispatch');
         var mutationDocument = require('can-util/dom/mutation-observer/document/document');
         var getDocument = require('can-util/dom/document/document');
-        var CIDStore = require('can-util/js/cid-set/cid-set');
+        var CIDMap = require('can-util/js/cid-map/cid-map');
         var string = require('can-util/js/string/string');
         require('can-util/dom/is-of-global-document/is-of-global-document');
         module.exports = function (specialEventName, mutationNodesProperty) {
@@ -4377,12 +4377,13 @@ define('can-util/dom/events/make-mutation-event/make-mutation-event', function (
                                     specialEventData.nodeIdsRespondingToInsert.delete(mutatedNode);
                                 }
                             },
-                            nodeIdsRespondingToInsert: new CIDStore()
+                            nodeIdsRespondingToInsert: new CIDMap()
                         };
                         mutationDocument['on' + string.capitalize(mutationNodesProperty)](specialEventData.handler);
                         domData.set.call(documentElement, specialEventName + 'Data', specialEventData);
                     }
-                    specialEventData.nodeIdsRespondingToInsert.add(this);
+                    var count = specialEventData.nodeIdsRespondingToInsert.get(this) || 0;
+                    specialEventData.nodeIdsRespondingToInsert.set(this, count + 1);
                 }
                 return originalAdd.apply(this, arguments);
             };
@@ -4391,7 +4392,12 @@ define('can-util/dom/events/make-mutation-event/make-mutation-event', function (
                     var documentElement = getDocument().documentElement;
                     var specialEventData = domData.get.call(documentElement, specialEventName + 'Data');
                     if (specialEventData) {
-                        specialEventData.nodeIdsRespondingToInsert['delete'](this);
+                        var newCount = specialEventData.nodeIdsRespondingToInsert.get(this) - 1;
+                        if (newCount) {
+                            specialEventData.nodeIdsRespondingToInsert.set(this, newCount);
+                        } else {
+                            specialEventData.nodeIdsRespondingToInsert.delete(this);
+                        }
                         if (!specialEventData.nodeIdsRespondingToInsert.size) {
                             mutationDocument['off' + string.capitalize(mutationNodesProperty)](specialEventData.handler);
                             domData.clean.call(documentElement, specialEventName + 'Data');
@@ -4405,7 +4411,7 @@ define('can-util/dom/events/make-mutation-event/make-mutation-event', function (
         return this;
     }()));
 });
-/*can-util@3.3.5#dom/events/removed/removed*/
+/*can-util@3.3.7#dom/events/removed/removed*/
 define('can-util/dom/events/removed/removed', function (require, exports, module) {
     var makeMutationEvent = require('can-util/dom/events/make-mutation-event/make-mutation-event');
     makeMutationEvent('removed', 'removedNodes');
@@ -4499,7 +4505,7 @@ define('can-view-live/lib/core', function (require, exports, module) {
     };
     module.exports = live;
 });
-/*can-util@3.3.5#js/diff/diff*/
+/*can-util@3.3.7#js/diff/diff*/
 define('can-util/js/diff/diff', function (require, exports, module) {
     var slice = [].slice;
     var defaultIdentity = function (a, b) {
@@ -4553,7 +4559,7 @@ define('can-util/js/diff/diff', function (require, exports, module) {
         return patches;
     };
 });
-/*can-util@3.3.5#dom/events/attributes/attributes*/
+/*can-util@3.3.7#dom/events/attributes/attributes*/
 define('can-util/dom/events/attributes/attributes', function (require, exports, module) {
     (function (global) {
         var events = require('can-util/dom/events/events');
@@ -4605,7 +4611,7 @@ define('can-util/dom/events/attributes/attributes', function (require, exports, 
         return this;
     }()));
 });
-/*can-util@3.3.5#dom/attr/attr*/
+/*can-util@3.3.7#dom/attr/attr*/
 define('can-util/dom/attr/attr', function (require, exports, module) {
     (function (global) {
         var setImmediate = require('can-util/js/set-immediate/set-immediate');
@@ -4683,24 +4689,53 @@ define('can-util/dom/attr/attr', function (require, exports, module) {
                         setData.set.call(el, 'canBindingCallback', { onMutation: onMutation });
                     }
                 }
-            }, setChildOptions = function (el, value) {
-                if (value != null) {
-                    var child = el.firstChild, hasSelected = false;
-                    while (child) {
-                        if (child.nodeName === 'OPTION') {
-                            if (value === child.value) {
-                                hasSelected = child.selected = true;
-                                break;
-                            }
+            }, _findOptionToSelect = function (parent, value) {
+                var child = parent.firstChild;
+                while (child) {
+                    if (child.nodeName === 'OPTION' && value === child.value) {
+                        return child;
+                    }
+                    if (child.nodeName === 'OPTGROUP') {
+                        var groupChild = _findOptionToSelect(child, value);
+                        if (groupChild) {
+                            return groupChild;
                         }
-                        child = child.nextSibling;
                     }
-                    if (!hasSelected) {
-                        el.selectedIndex = -1;
-                    }
+                    child = child.nextSibling;
+                }
+            }, setChildOptions = function (el, value) {
+                var option;
+                if (value != null) {
+                    option = _findOptionToSelect(el, value);
+                }
+                if (option) {
+                    option.selected = true;
                 } else {
                     el.selectedIndex = -1;
                 }
+            }, forEachOption = function (parent, fn) {
+                var child = parent.firstChild;
+                while (child) {
+                    if (child.nodeName === 'OPTION') {
+                        fn(child);
+                    }
+                    if (child.nodeName === 'OPTGROUP') {
+                        forEachOption(child, fn);
+                    }
+                    child = child.nextSibling;
+                }
+            }, collectSelectedOptions = function (parent) {
+                var selectedValues = [];
+                forEachOption(parent, function (option) {
+                    if (option.selected) {
+                        selectedValues.push(option.value);
+                    }
+                });
+                return selectedValues;
+            }, markSelectedOptions = function (parent, values) {
+                forEachOption(parent, function (option) {
+                    option.selected = values.indexOf(option.value) !== -1;
+                });
             }, setChildOptionsOnChange = function (select, aEL) {
                 var handler = setData.get.call(select, 'attrSetChildOptions');
                 if (handler) {
@@ -4924,25 +4959,11 @@ define('can-util/dom/attr/attr', function (require, exports, module) {
                     },
                     values: {
                         get: function () {
-                            var values = [];
-                            var child = this.firstChild;
-                            while (child) {
-                                if (child.nodeName === 'OPTION' && child.selected) {
-                                    values.push(child.value);
-                                }
-                                child = child.nextSibling;
-                            }
-                            return values;
+                            return collectSelectedOptions(this);
                         },
                         set: function (values) {
                             values = values || [];
-                            var child = this.firstChild;
-                            while (child) {
-                                if (child.nodeName === 'OPTION') {
-                                    child.selected = values.indexOf(child.value) !== -1;
-                                }
-                                child = child.nextSibling;
-                            }
+                            markSelectedOptions(this, values);
                             setData.set.call(this, 'stickyValues', attr.get(this, 'values'));
                             setupMO(this, function () {
                                 var previousValues = setData.get.call(this, 'stickyValues');
@@ -5646,7 +5667,7 @@ define('can-view-live', function (require, exports, module) {
     require('can-view-live/lib/text');
     module.exports = live;
 });
-/*can-util@3.3.5#js/base-url/base-url*/
+/*can-util@3.3.7#js/base-url/base-url*/
 define('can-util/js/base-url/base-url', function (require, exports, module) {
     (function (global) {
         var getGlobal = require('can-util/js/global/global');
@@ -5671,7 +5692,7 @@ define('can-util/js/base-url/base-url', function (require, exports, module) {
         return this;
     }()));
 });
-/*can-util@3.3.5#js/parse-uri/parse-uri*/
+/*can-util@3.3.7#js/parse-uri/parse-uri*/
 define('can-util/js/parse-uri/parse-uri', function (require, exports, module) {
     module.exports = function (url) {
         var m = String(url).replace(/^\s+|\s+$/g, '').match(/^([^:\/?#]+:)?(\/\/(?:[^:@]*(?::[^:@]*)?@)?(([^:\/?#]*)(?::(\d*))?))?([^?#]*)(\?[^#]*)?(#[\s\S]*)?/);
@@ -5688,7 +5709,7 @@ define('can-util/js/parse-uri/parse-uri', function (require, exports, module) {
         } : null;
     };
 });
-/*can-util@3.3.5#js/join-uris/join-uris*/
+/*can-util@3.3.7#js/join-uris/join-uris*/
 define('can-util/js/join-uris/join-uris', function (require, exports, module) {
     var parseURI = require('can-util/js/parse-uri/parse-uri');
     module.exports = function (base, href) {
@@ -7360,7 +7381,7 @@ define('can-stache-bindings', function (require, exports, module) {
         special: special
     };
 });
-/*can-util@3.3.5#dom/events/inserted/inserted*/
+/*can-util@3.3.7#dom/events/inserted/inserted*/
 define('can-util/dom/events/inserted/inserted', function (require, exports, module) {
     var makeMutationEvent = require('can-util/dom/events/make-mutation-event/make-mutation-event');
     makeMutationEvent('inserted', 'addedNodes');
@@ -7546,17 +7567,24 @@ define('can-component', function (require, exports, module) {
     });
     module.exports = namespace.Component = Component;
 });
-/*can-util@3.3.5#js/deparam/deparam*/
-define('can-util/js/deparam/deparam', function (require, exports, module) {
-    var each = require('can-util/js/each/each');
-    var digitTest = /^\d+$/, keyBreaker = /([^\[\]]+)|(\[\])/g, paramTest = /([^?#]*)(#.*)?$/, prep = function (str) {
-            return decodeURIComponent(str.replace(/\+/g, ' '));
+/*can-deparam@1.0.1#dist/cjs/can-deparam*/
+define('can-deparam', function (require, exports, module) {
+    var namespace = require('can-namespace');
+    var digitTest = /^\d+$/, keyBreaker = /([^\[\]]+)|(\[\])/g, paramTest = /([^?#]*)(#.*)?$/, entityRegex = /%([^0-9a-f][0-9a-f]|[0-9a-f][^0-9a-f]|[^0-9a-f][^0-9a-f])/i, prep = function (str) {
+            str = str.replace(/\+/g, ' ');
+            try {
+                return decodeURIComponent(str);
+            } catch (e) {
+                return decodeURIComponent(str.replace(entityRegex, function (match, hex) {
+                    return '%25' + hex;
+                }));
+            }
         };
-    module.exports = function (params) {
+    module.exports = namespace.deparam = function (params) {
         var data = {}, pairs, lastPart;
         if (params && paramTest.test(params)) {
             pairs = params.split('&');
-            each(pairs, function (pair) {
+            pairs.forEach(function (pair) {
                 var parts = pair.split('='), key = prep(parts.shift()), value = prep(parts.join('=')), current = data;
                 if (key) {
                     parts = key.match(keyBreaker);
@@ -7578,12 +7606,17 @@ define('can-util/js/deparam/deparam', function (require, exports, module) {
         return data;
     };
 });
-/*can-util@3.3.5#js/param/param*/
-define('can-util/js/param/param', function (require, exports, module) {
-    var isArray = require('can-util/js/is-array/is-array');
+/*can-util@3.3.7#js/deparam/deparam*/
+define('can-util/js/deparam/deparam', function (require, exports, module) {
+    var canDev = require('can-util/js/dev/dev');
+    canDev.warn('js/deparam/deparam is deprecated; please use can-deparam instead: https://github.com/canjs/can-deparam');
+    module.exports = require('can-deparam');
+});
+/*can-param@1.0.1#dist/cjs/can-param*/
+define('can-param', function (require, exports, module) {
     var namespace = require('can-namespace');
     function buildParam(prefix, obj, add) {
-        if (isArray(obj)) {
+        if (Array.isArray(obj)) {
             for (var i = 0, l = obj.length; i < l; ++i) {
                 add(prefix + '[]', obj[i]);
             }
@@ -7605,7 +7638,13 @@ define('can-util/js/param/param', function (require, exports, module) {
         return pairs.join('&').replace(/%20/g, '+');
     };
 });
-/*can-util@3.3.5#js/is-web-worker/is-web-worker*/
+/*can-util@3.3.7#js/param/param*/
+define('can-util/js/param/param', function (require, exports, module) {
+    var canDev = require('can-util/js/dev/dev');
+    canDev.warn('js/param/param is deprecated; please use can-param instead: https://github.com/canjs/can-param');
+    module.exports = require('can-param');
+});
+/*can-util@3.3.7#js/is-web-worker/is-web-worker*/
 define('can-util/js/is-web-worker/is-web-worker', function (require, exports, module) {
     (function (global) {
         module.exports = function () {
@@ -7615,7 +7654,7 @@ define('can-util/js/is-web-worker/is-web-worker', function (require, exports, mo
         return this;
     }()));
 });
-/*can-util@3.3.5#js/diff-object/diff-object*/
+/*can-util@3.3.7#js/diff-object/diff-object*/
 define('can-util/js/diff-object/diff-object', function (require, exports, module) {
     var assign = require('can-util/js/assign/assign');
     module.exports = exports = function (oldObject, newObject) {
@@ -8854,7 +8893,7 @@ define('can-stache/src/intermediate_and_imports', function (require, exports, mo
         };
     };
 });
-/*can-util@3.3.5#js/import/import*/
+/*can-util@3.3.7#js/import/import*/
 define('can-util/js/import/import', function (require, exports, module) {
     (function (global) {
         var isFunction = require('can-util/js/is-function/is-function');
@@ -9157,7 +9196,7 @@ define('can-stache', function (require, exports, module) {
     };
     module.exports = namespace.stache = stache;
 });
-/*can-util@3.3.5#js/string-to-any/string-to-any*/
+/*can-util@3.3.7#js/string-to-any/string-to-any*/
 define('can-util/js/string-to-any/string-to-any', function (require, exports, module) {
     module.exports = function (str) {
         switch (str) {
@@ -9258,880 +9297,7 @@ define('can-stache-converters', function (require, exports, module) {
         }
     });
 });
-/*can-connect@1.3.8#connect*/
-define('can-connect/connect', function (require, exports, module) {
-    var assign = require('can-util/js/assign/assign');
-    var connect = function (behaviors, options) {
-        behaviors = behaviors.map(function (behavior, index) {
-            var sortedIndex = -1;
-            if (typeof behavior === 'string') {
-                sortedIndex = connect.order.indexOf(behavior);
-                behavior = behaviorsMap[behavior];
-            } else if (behavior.isBehavior) {
-                sortedIndex = connect.order.indexOf(behavior.behaviorName);
-            } else {
-                behavior = connect.behavior(behavior);
-            }
-            return {
-                originalIndex: index,
-                sortedIndex: sortedIndex,
-                behavior: behavior
-            };
-        }).sort(function (b1, b2) {
-            if (~b1.sortedIndex && ~b2.sortedIndex) {
-                return b1.sortedIndex - b2.sortedIndex;
-            }
-            return b1.originalIndex - b2.originalIndex;
-        });
-        behaviors = behaviors.map(function (b) {
-            return b.behavior;
-        });
-        var behavior = connect.base(connect.behavior('options', function () {
-            return options;
-        })());
-        behaviors.forEach(function (behave) {
-            behavior = behave(behavior);
-        });
-        if (behavior.init) {
-            behavior.init();
-        }
-        return behavior;
-    };
-    connect.order = [
-        'data/localstorage-cache',
-        'data/url',
-        'data/parse',
-        'cache-requests',
-        'data/combine-requests',
-        'constructor',
-        'constructor/store',
-        'can/map',
-        'can/ref',
-        'fall-through-cache',
-        'data/worker',
-        'real-time',
-        'data/callbacks-cache',
-        'data/callbacks',
-        'constructor/callbacks-once'
-    ];
-    connect.behavior = function (name, behavior) {
-        if (typeof name !== 'string') {
-            behavior = name;
-            name = undefined;
-        }
-        var behaviorMixin = function (base) {
-            var Behavior = function () {
-            };
-            Behavior.name = name;
-            Behavior.prototype = base;
-            var newBehavior = new Behavior();
-            var res = typeof behavior === 'function' ? behavior.apply(newBehavior, arguments) : behavior;
-            assign(newBehavior, res);
-            newBehavior.__behaviorName = name;
-            return newBehavior;
-        };
-        if (name) {
-            behaviorMixin.behaviorName = name;
-            behaviorsMap[name] = behaviorMixin;
-        }
-        behaviorMixin.isBehavior = true;
-        return behaviorMixin;
-    };
-    var behaviorsMap = {};
-    module.exports = connect;
-});
-/*can-connect@1.3.8#base/base*/
-define('can-connect/base/base', function (require, exports, module) {
-    var connect = require('can-connect/connect');
-    module.exports = connect.behavior('base', function (baseConnection) {
-        return {
-            id: function (instance) {
-                var ids = [], algebra = this.algebra;
-                if (algebra && algebra.clauses && algebra.clauses.id) {
-                    for (var prop in algebra.clauses.id) {
-                        ids.push(instance[prop]);
-                    }
-                }
-                if (this.idProp && !ids.length) {
-                    ids.push(instance[this.idProp]);
-                }
-                if (!ids.length) {
-                    ids.push(instance.id);
-                }
-                return ids.length > 1 ? ids.join('@|@') : ids[0];
-            },
-            idProp: baseConnection.idProp || 'id',
-            listSet: function (list) {
-                return list[this.listSetProp];
-            },
-            listSetProp: '__listSet',
-            init: function () {
-            }
-        };
-    });
-});
-/*can-connect@1.3.8#can-connect*/
-define('can-connect', function (require, exports, module) {
-    var connect = require('can-connect/connect');
-    var base = require('can-connect/base/base');
-    var ns = require('can-namespace');
-    connect.base = base;
-    module.exports = ns.connect = connect;
-});
-/*can-connect@1.3.8#helpers/weak-reference-map*/
-define('can-connect/helpers/weak-reference-map', function (require, exports, module) {
-    var assign = require('can-util/js/assign/assign');
-    var WeakReferenceMap = function () {
-        this.set = {};
-    };
-    assign(WeakReferenceMap.prototype, {
-        has: function (key) {
-            return !!this.set[key];
-        },
-        addReference: function (key, item) {
-            if (typeof key === 'undefined') {
-                return;
-            }
-            var data = this.set[key];
-            if (!data) {
-                data = this.set[key] = {
-                    item: item,
-                    referenceCount: 0,
-                    key: key
-                };
-            }
-            data.referenceCount++;
-        },
-        deleteReference: function (key) {
-            var data = this.set[key];
-            if (data) {
-                data.referenceCount--;
-                if (data.referenceCount === 0) {
-                    delete this.set[key];
-                }
-            }
-        },
-        get: function (key) {
-            var data = this.set[key];
-            if (data) {
-                return data.item;
-            }
-        },
-        forEach: function (cb) {
-            for (var id in this.set) {
-                cb(this.set[id].item, id);
-            }
-        }
-    });
-    module.exports = WeakReferenceMap;
-});
-/*can-connect@1.3.8#helpers/overwrite*/
-define('can-connect/helpers/overwrite', function (require, exports, module) {
-    module.exports = function (d, s, id) {
-        for (var prop in d) {
-            if (prop !== id && !(prop in s)) {
-                delete d[prop];
-            }
-        }
-        for (prop in s) {
-            d[prop] = s[prop];
-        }
-        return d;
-    };
-});
-/*can-connect@1.3.8#helpers/id-merge*/
-define('can-connect/helpers/id-merge', function (require, exports, module) {
-    var map = [].map;
-    module.exports = function (list, update, id, make) {
-        var listIndex = 0, updateIndex = 0;
-        while (listIndex < list.length && updateIndex < update.length) {
-            var listItem = list[listIndex], updateItem = update[updateIndex], lID = id(listItem), uID = id(updateItem);
-            if (id(listItem) === id(updateItem)) {
-                listIndex++;
-                updateIndex++;
-                continue;
-            }
-            if (updateIndex + 1 < update.length && id(update[updateIndex + 1]) === lID) {
-                list.splice(listIndex, 0, make(update[updateIndex]));
-                listIndex++;
-                updateIndex++;
-                continue;
-            } else if (listIndex + 1 < list.length && id(list[listIndex + 1]) === uID) {
-                list.splice(listIndex, 1);
-                listIndex++;
-                updateIndex++;
-                continue;
-            } else {
-                list.splice.apply(list, [
-                    listIndex,
-                    list.length - listIndex
-                ].concat(map.call(update.slice(updateIndex), make)));
-                return list;
-            }
-        }
-        if (updateIndex === update.length && listIndex === list.length) {
-            return;
-        }
-        list.splice.apply(list, [
-            listIndex,
-            list.length - listIndex
-        ].concat(map.call(update.slice(updateIndex), make)));
-        return;
-    };
-});
-/*can-connect@1.3.8#constructor/constructor*/
-define('can-connect/constructor/constructor', function (require, exports, module) {
-    var isArray = require('can-util/js/is-array/is-array');
-    var makeArray = require('can-util/js/make-array/make-array');
-    var assign = require('can-util/js/assign/assign');
-    var connect = require('can-connect');
-    var WeakReferenceMap = require('can-connect/helpers/weak-reference-map');
-    var overwrite = require('can-connect/helpers/overwrite');
-    var idMerge = require('can-connect/helpers/id-merge');
-    module.exports = connect.behavior('constructor', function (baseConnection) {
-        var behavior = {
-            cidStore: new WeakReferenceMap(),
-            _cid: 0,
-            get: function (params) {
-                var self = this;
-                return this.getData(params).then(function (data) {
-                    return self.hydrateInstance(data);
-                });
-            },
-            getList: function (set) {
-                set = set || {};
-                var self = this;
-                return this.getListData(set).then(function (data) {
-                    return self.hydrateList(data, set);
-                });
-            },
-            hydrateList: function (listData, set) {
-                if (isArray(listData)) {
-                    listData = { data: listData };
-                }
-                var arr = [];
-                for (var i = 0; i < listData.data.length; i++) {
-                    arr.push(this.hydrateInstance(listData.data[i]));
-                }
-                listData.data = arr;
-                if (this.list) {
-                    return this.list(listData, set);
-                } else {
-                    var list = listData.data.slice(0);
-                    list[this.listSetProp || '__listSet'] = set;
-                    copyMetadata(listData, list);
-                    return list;
-                }
-            },
-            hydrateInstance: function (props) {
-                if (this.instance) {
-                    return this.instance(props);
-                } else {
-                    return assign({}, props);
-                }
-            },
-            save: function (instance) {
-                var serialized = this.serializeInstance(instance);
-                var id = this.id(instance);
-                var self = this;
-                if (id === undefined) {
-                    var cid = this._cid++;
-                    this.cidStore.addReference(cid, instance);
-                    return this.createData(serialized, cid).then(function (data) {
-                        if (data !== undefined) {
-                            self.createdInstance(instance, data);
-                        }
-                        self.cidStore.deleteReference(cid, instance);
-                        return instance;
-                    });
-                } else {
-                    return this.updateData(serialized).then(function (data) {
-                        if (data !== undefined) {
-                            self.updatedInstance(instance, data);
-                        }
-                        return instance;
-                    });
-                }
-            },
-            destroy: function (instance) {
-                var serialized = this.serializeInstance(instance), self = this;
-                return this.destroyData(serialized).then(function (data) {
-                    if (data !== undefined) {
-                        self.destroyedInstance(instance, data);
-                    }
-                    return instance;
-                });
-            },
-            createdInstance: function (instance, props) {
-                assign(instance, props);
-            },
-            updatedInstance: function (instance, data) {
-                overwrite(instance, data, this.idProp);
-            },
-            updatedList: function (list, listData, set) {
-                var instanceList = [];
-                for (var i = 0; i < listData.data.length; i++) {
-                    instanceList.push(this.hydrateInstance(listData.data[i]));
-                }
-                idMerge(list, instanceList, this.id.bind(this), this.hydrateInstance.bind(this));
-                copyMetadata(listData, list);
-            },
-            destroyedInstance: function (instance, data) {
-                overwrite(instance, data, this.idProp);
-            },
-            serializeInstance: function (instance) {
-                return assign({}, instance);
-            },
-            serializeList: function (list) {
-                var self = this;
-                return makeArray(list).map(function (instance) {
-                    return self.serializeInstance(instance);
-                });
-            },
-            isNew: function (instance) {
-                var id = this.id(instance);
-                return !(id || id === 0);
-            }
-        };
-        return behavior;
-    });
-    function copyMetadata(listData, list) {
-        for (var prop in listData) {
-            if (prop !== 'data') {
-                if (typeof list.set === 'function') {
-                    list.set(prop, listData[prop]);
-                } else if (typeof list.attr === 'function') {
-                    list.attr(prop, listData[prop]);
-                } else {
-                    list[prop] = listData[prop];
-                }
-            }
-        }
-    }
-});
-/*can-connect@1.3.8#can/map/map*/
-define('can-connect/can/map/map', function (require, exports, module) {
-    'use strict';
-    var each = require('can-util/js/each/each');
-    var connect = require('can-connect');
-    var canBatch = require('can-event/batch/batch');
-    var canEvent = require('can-event');
-    var Observation = require('can-observation');
-    var isPlainObject = require('can-util/js/is-plain-object/is-plain-object');
-    var isArray = require('can-util/js/is-array/is-array');
-    var types = require('can-types');
-    var each = require('can-util/js/each/each');
-    var isFunction = require('can-util/js/is-function/is-function');
-    var dev = require('can-util/js/dev/dev');
-    var setExpando = function (map, prop, value) {
-        if ('attr' in map) {
-            map[prop] = value;
-        } else {
-            map._data[prop] = value;
-        }
-    };
-    var getExpando = function (map, prop) {
-        if ('attr' in map) {
-            return map[prop];
-        } else {
-            return map._data[prop];
-        }
-    };
-    var canMapBehavior = connect.behavior('can/map', function (baseConnection) {
-        var behavior = {
-            init: function () {
-                this.Map = this.Map || types.DefaultMap.extend({});
-                this.List = this.List || types.DefaultList.extend({});
-                overwrite(this, this.Map, mapOverwrites, mapStaticOverwrites);
-                overwrite(this, this.List, listPrototypeOverwrites, listStaticOverwrites);
-                baseConnection.init.apply(this, arguments);
-            },
-            id: function (instance) {
-                if (!isPlainObject(instance)) {
-                    var ids = [], algebra = this.algebra;
-                    if (algebra && algebra.clauses && algebra.clauses.id) {
-                        for (var prop in algebra.clauses.id) {
-                            ids.push(readObservabe(instance, prop));
-                        }
-                    }
-                    if (this.idProp && !ids.length) {
-                        ids.push(readObservabe(instance, this.idProp));
-                    }
-                    if (!ids.length) {
-                        ids.push(readObservabe(instance, 'id'));
-                    }
-                    return ids.length > 1 ? ids.join('@|@') : ids[0];
-                } else {
-                    return baseConnection.id(instance);
-                }
-            },
-            serializeInstance: function (instance) {
-                return instance.serialize();
-            },
-            serializeList: function (list) {
-                return list.serialize();
-            },
-            instance: function (props) {
-                var _Map = this.Map || types.DefaultMap;
-                return new _Map(props);
-            },
-            list: function (listData, set) {
-                var _List = this.List || this.Map && this.Map.List || types.DefaultList;
-                var list = new _List(listData.data);
-                each(listData, function (val, prop) {
-                    if (prop !== 'data') {
-                        list[list.set ? 'set' : 'attr'](prop, val);
-                    }
-                });
-                list.__listSet = set;
-                return list;
-            },
-            updatedList: function () {
-                canBatch.start();
-                var res = baseConnection.updatedList.apply(this, arguments);
-                canBatch.stop();
-                return res;
-            },
-            save: function (instance) {
-                setExpando(instance, '_saving', true);
-                canEvent.dispatch.call(instance, '_saving', [
-                    true,
-                    false
-                ]);
-                var done = function () {
-                    setExpando(instance, '_saving', false);
-                    canEvent.dispatch.call(instance, '_saving', [
-                        false,
-                        true
-                    ]);
-                };
-                var base = baseConnection.save.apply(this, arguments);
-                base.then(done, done);
-                return base;
-            },
-            destroy: function (instance) {
-                setExpando(instance, '_destroying', true);
-                canEvent.dispatch.call(instance, '_destroying', [
-                    true,
-                    false
-                ]);
-                var done = function () {
-                    setExpando(instance, '_destroying', false);
-                    canEvent.dispatch.call(instance, '_destroying', [
-                        false,
-                        true
-                    ]);
-                };
-                var base = baseConnection.destroy.apply(this, arguments);
-                base.then(done, done);
-                return base;
-            }
-        };
-        each([
-            'created',
-            'updated',
-            'destroyed'
-        ], function (funcName) {
-            behavior[funcName + 'Instance'] = function (instance, props) {
-                if (props && typeof props === 'object') {
-                    if ('set' in instance) {
-                        instance.set(isFunction(props.get) ? props.get() : props, this.constructor.removeAttr || false);
-                    } else if ('attr' in instance) {
-                        instance.attr(isFunction(props.attr) ? props.attr() : props, this.constructor.removeAttr || false);
-                    } else {
-                        canBatch.start();
-                        each(props, function (value, prop) {
-                            instance[prop] = value;
-                        });
-                        canBatch.stop();
-                    }
-                }
-                canMapBehavior.callbackInstanceEvents(funcName, instance);
-            };
-        });
-        return behavior;
-    });
-    canMapBehavior.callbackInstanceEvents = function (funcName, instance) {
-        var constructor = instance.constructor;
-        canEvent.dispatch.call(instance, {
-            type: funcName,
-            target: instance
-        });
-        if (this.id) {
-            dev.log('can-connect/can/map/map.js - ' + (constructor.shortName || this.name) + ' ' + this.id(instance) + ' ' + funcName);
-        }
-        canEvent.dispatch.call(constructor, funcName, [instance]);
-    };
-    var callCanReadingOnIdRead = true;
-    var mapStaticOverwrites = {
-        getList: function (base, connection) {
-            return function (set) {
-                return connection.getList(set);
-            };
-        },
-        findAll: function (base, connection) {
-            return function (set) {
-                return connection.getList(set);
-            };
-        },
-        get: function (base, connection) {
-            return function (params) {
-                return connection.get(params);
-            };
-        },
-        findOne: function (base, connection) {
-            return function (params) {
-                return connection.get(params);
-            };
-        }
-    };
-    var mapOverwrites = {
-        _eventSetup: function (base, connection) {
-            return function () {
-                callCanReadingOnIdRead = false;
-                connection.addInstanceReference(this);
-                callCanReadingOnIdRead = true;
-                return base.apply(this, arguments);
-            };
-        },
-        _eventTeardown: function (base, connection) {
-            return function () {
-                callCanReadingOnIdRead = false;
-                connection.deleteInstanceReference(this);
-                callCanReadingOnIdRead = true;
-                return base.apply(this, arguments);
-            };
-        },
-        ___set: function (base, connection) {
-            return function (prop, val) {
-                base.apply(this, arguments);
-                if (prop === connection.idProp && this._bindings) {
-                    connection.addInstanceReference(this);
-                }
-            };
-        },
-        isNew: function (base, connection) {
-            return function () {
-                var id = connection.id(this);
-                return !(id || id === 0);
-            };
-        },
-        isSaving: function (base, connection) {
-            return function () {
-                Observation.add(this, '_saving');
-                return !!getExpando(this, '_saving');
-            };
-        },
-        isDestroying: function (base, connection) {
-            return function () {
-                Observation.add(this, '_destroying');
-                return !!getExpando(this, '_destroying');
-            };
-        },
-        save: function (base, connection) {
-            return function (success, error) {
-                var promise = connection.save(this);
-                promise.then(success, error);
-                return promise;
-            };
-        },
-        destroy: function (base, connection) {
-            return function (success, error) {
-                var promise;
-                if (this.isNew()) {
-                    promise = Promise.resolve(this);
-                    connection.destroyedInstance(this, {});
-                } else {
-                    promise = connection.destroy(this);
-                }
-                promise.then(success, error);
-                return promise;
-            };
-        }
-    };
-    var listPrototypeOverwrites = {
-        setup: function (base, connection) {
-            return function (params) {
-                if (isPlainObject(params) && !isArray(params)) {
-                    this.__listSet = params;
-                    base.apply(this);
-                    this.replace(types.isPromise(params) ? params : connection.getList(params));
-                } else {
-                    base.apply(this, arguments);
-                }
-            };
-        },
-        _eventSetup: function (base, connection) {
-            return function () {
-                connection.addListReference(this);
-                if (base) {
-                    return base.apply(this, arguments);
-                }
-            };
-        },
-        _eventTeardown: function (base, connection) {
-            return function () {
-                connection.deleteListReference(this);
-                if (base) {
-                    return base.apply(this, arguments);
-                }
-            };
-        }
-    };
-    var listStaticOverwrites = {
-        _bubbleRule: function (base, connection) {
-            return function (eventName, list) {
-                var bubbleRules = base(eventName, list);
-                bubbleRules.push('destroyed');
-                return bubbleRules;
-            };
-        }
-    };
-    var readObservabe = function (instance, prop) {
-        if ('__get' in instance) {
-            if (callCanReadingOnIdRead) {
-                Observation.add(instance, prop);
-            }
-            return instance.__get(prop);
-        } else {
-            if (callCanReadingOnIdRead) {
-                return instance[prop];
-            } else {
-                return Observation.ignore(function () {
-                    return instance[prop];
-                })();
-            }
-        }
-    };
-    var overwrite = function (connection, Constructor, prototype, statics) {
-        var prop;
-        for (prop in prototype) {
-            Constructor.prototype[prop] = prototype[prop](Constructor.prototype[prop], connection);
-        }
-        if (statics) {
-            for (prop in statics) {
-                Constructor[prop] = statics[prop](Constructor[prop], connection);
-            }
-        }
-    };
-    module.exports = canMapBehavior;
-});
-/*can-connect@1.3.8#helpers/get-id-props*/
-define('can-connect/helpers/get-id-props', function (require, exports, module) {
-    module.exports = function (connection) {
-        var ids = [], algebra = connection.algebra;
-        if (algebra && algebra.clauses && algebra.clauses.id) {
-            for (var prop in algebra.clauses.id) {
-                ids.push(prop);
-            }
-        }
-        if (connection.idProp && !ids.length) {
-            ids.push(connection.idProp);
-        }
-        if (!ids.length) {
-            ids.push('id');
-        }
-        return ids;
-    };
-});
-/*can-connect@1.3.8#helpers/sorted-set-json*/
-define('can-connect/helpers/sorted-set-json', function (require, exports, module) {
-    var forEach = [].forEach;
-    var keys = Object.keys;
-    module.exports = function (set) {
-        if (set == null) {
-            return set;
-        } else {
-            var sorted = {};
-            forEach.call(keys(set).sort(), function (prop) {
-                sorted[prop] = set[prop];
-            });
-            return JSON.stringify(sorted);
-        }
-    };
-});
-/*can-connect@1.3.8#constructor/store/store*/
-define('can-connect/constructor/store/store', function (require, exports, module) {
-    var connect = require('can-connect');
-    var WeakReferenceMap = require('can-connect/helpers/weak-reference-map');
-    var sortedSetJSON = require('can-connect/helpers/sorted-set-json');
-    var canEvent = require('can-event');
-    var assign = require('can-util/js/assign/assign');
-    var pendingRequests = 0;
-    var noRequestsTimer = null;
-    var requests = {
-        increment: function (connection) {
-            pendingRequests++;
-            clearTimeout(noRequestsTimer);
-        },
-        decrement: function (connection) {
-            pendingRequests--;
-            if (pendingRequests === 0) {
-                noRequestsTimer = setTimeout(function () {
-                    requests.dispatch('end');
-                }, 10);
-            }
-        },
-        count: function () {
-            return pendingRequests;
-        }
-    };
-    assign(requests, canEvent);
-    var constructorStore = connect.behavior('constructor/store', function (baseConnection) {
-        var behavior = {
-            instanceStore: new WeakReferenceMap(),
-            listStore: new WeakReferenceMap(),
-            _requestInstances: {},
-            _requestLists: {},
-            _finishedRequest: function () {
-                var id;
-                requests.decrement(this);
-                if (requests.count() === 0) {
-                    for (id in this._requestInstances) {
-                        this.instanceStore.deleteReference(id);
-                    }
-                    this._requestInstances = {};
-                    for (id in this._requestLists) {
-                        this.listStore.deleteReference(id);
-                    }
-                    this._requestLists = {};
-                }
-            },
-            addInstanceReference: function (instance, id) {
-                this.instanceStore.addReference(id || this.id(instance), instance);
-            },
-            addInstanceMetaData: function (instance, name, value) {
-                var data = this.instanceStore.set[this.id(instance)];
-                if (data) {
-                    data[name] = value;
-                }
-            },
-            getInstanceMetaData: function (instance, name) {
-                var data = this.instanceStore.set[this.id(instance)];
-                if (data) {
-                    return data[name];
-                }
-            },
-            deleteInstanceMetaData: function (instance, name) {
-                var data = this.instanceStore.set[this.id(instance)];
-                delete data[name];
-            },
-            deleteInstanceReference: function (instance) {
-                this.instanceStore.deleteReference(this.id(instance), instance);
-            },
-            addListReference: function (list, set) {
-                var id = sortedSetJSON(set || this.listSet(list));
-                if (id) {
-                    this.listStore.addReference(id, list);
-                }
-            },
-            deleteListReference: function (list, set) {
-                var id = sortedSetJSON(set || this.listSet(list));
-                if (id) {
-                    this.listStore.deleteReference(id, list);
-                }
-            },
-            hydratedInstance: function (instance) {
-                if (requests.count() > 0) {
-                    var id = this.id(instance);
-                    if (!this._requestInstances[id]) {
-                        this.addInstanceReference(instance);
-                        this._requestInstances[id] = instance;
-                    }
-                }
-            },
-            hydrateInstance: function (props) {
-                var id = this.id(props);
-                if ((id || id === 0) && this.instanceStore.has(id)) {
-                    var storeInstance = this.instanceStore.get(id);
-                    this.updatedInstance(storeInstance, props);
-                    return storeInstance;
-                }
-                var instance = baseConnection.hydrateInstance.call(this, props);
-                this.hydratedInstance(instance);
-                return instance;
-            },
-            hydratedList: function (list, set) {
-                if (requests.count() > 0) {
-                    var id = sortedSetJSON(set || this.listSet(list));
-                    if (id) {
-                        if (!this._requestLists[id]) {
-                            this.addListReference(list, set);
-                            this._requestLists[id] = list;
-                        }
-                    }
-                }
-            },
-            hydrateList: function (listData, set) {
-                set = set || this.listSet(listData);
-                var id = sortedSetJSON(set);
-                if (id && this.listStore.has(id)) {
-                    var storeList = this.listStore.get(id);
-                    this.updatedList(storeList, listData, set);
-                    return storeList;
-                }
-                var list = baseConnection.hydrateList.call(this, listData, set);
-                this.hydratedList(list, set);
-                return list;
-            },
-            getList: function (params) {
-                var self = this;
-                requests.increment(this);
-                var promise = baseConnection.getList.call(this, params);
-                promise.then(function (instances) {
-                    self._finishedRequest();
-                }, function () {
-                    self._finishedRequest();
-                });
-                return promise;
-            },
-            get: function (params) {
-                var self = this;
-                requests.increment(this);
-                var promise = baseConnection.get.call(this, params);
-                promise.then(function (instance) {
-                    self._finishedRequest();
-                }, function () {
-                    self._finishedRequest();
-                });
-                return promise;
-            },
-            save: function (instance) {
-                var self = this;
-                requests.increment(this);
-                var updating = !this.isNew(instance);
-                if (updating) {
-                    this.addInstanceReference(instance);
-                }
-                var promise = baseConnection.save.call(this, instance);
-                promise.then(function (instances) {
-                    if (updating) {
-                        self.deleteInstanceReference(instance);
-                    }
-                    self._finishedRequest();
-                }, function () {
-                    self._finishedRequest();
-                });
-                return promise;
-            },
-            destroy: function (instance) {
-                var self = this;
-                requests.increment(this);
-                var promise = baseConnection.destroy.call(this, instance);
-                promise.then(function (instance) {
-                    self._finishedRequest();
-                }, function () {
-                    self._finishedRequest();
-                });
-                return promise;
-            }
-        };
-        return behavior;
-    });
-    constructorStore.requests = requests;
-    module.exports = constructorStore;
-});
-/*can-util@3.3.5#js/defaults/defaults*/
+/*can-util@3.3.7#js/defaults/defaults*/
 define('can-util/js/defaults/defaults', function (require, exports, module) {
     module.exports = function (target) {
         var length = arguments.length;
@@ -10816,530 +9982,641 @@ define('can-define', function (require, exports, module) {
         }
     };
 });
-/*can-connect@1.3.8#can/ref/ref*/
-define('can-connect/can/ref/ref', function (require, exports, module) {
-    var connect = require('can-connect');
-    var getIdProps = require('can-connect/helpers/get-id-props');
-    var WeakReferenceMap = require('can-connect/helpers/weak-reference-map');
-    var Observation = require('can-observation');
-    var constructorStore = require('can-connect/constructor/store/store');
+/*can-define@1.0.17#define-helpers/define-helpers*/
+define('can-define/define-helpers/define-helpers', function (require, exports, module) {
+    var assign = require('can-util/js/assign/assign');
+    var CID = require('can-cid');
     var define = require('can-define');
-    var makeRef = function (connection) {
-        var idProp = getIdProps(connection)[0];
-        var Ref = function (id, value) {
-            if (typeof id === 'object') {
-                value = id;
-                id = value[idProp];
-            }
-            var storeRef = Ref.store.get(id);
-            if (storeRef) {
-                if (value && !storeRef._value) {
-                    if (value instanceof connection.Map) {
-                        storeRef._value = value;
-                    } else {
-                        storeRef._value = connection.hydrateInstance(value);
-                    }
-                }
-                return storeRef;
-            }
-            this[idProp] = id;
-            if (value) {
-                if (value instanceof connection.Map) {
-                    this._value = value;
-                } else {
-                    this._value = connection.hydrateInstance(value);
-                }
-            }
-            if (constructorStore.requests.count() > 0) {
-                if (!Ref._requestInstances[id]) {
-                    Ref.store.addReference(id, this);
-                    Ref._requestInstances[id] = this;
-                }
-            }
-        };
-        Ref.store = new WeakReferenceMap();
-        Ref._requestInstances = {};
-        Ref.type = function (ref) {
-            if (ref && typeof ref !== 'object') {
-                return new Ref(ref);
+    var canBatch = require('can-event/batch/batch');
+    var canEvent = require('can-event');
+    var hasMethod = function (obj, method) {
+        return obj && typeof obj === 'object' && method in obj;
+    };
+    var defineHelpers = {
+        extendedSetup: function (props) {
+            assign(this, props);
+        },
+        toObject: function (map, props, where, Type) {
+            if (props instanceof Type) {
+                props.each(function (value, prop) {
+                    where[prop] = value;
+                });
+                return where;
             } else {
-                return new Ref(ref[idProp], ref);
+                return props;
             }
-        };
-        var defs = {
-            promise: {
-                get: function () {
-                    if (this._value) {
-                        return Promise.resolve(this._value);
+        },
+        defineExpando: function (map, prop, value) {
+            var constructorDefines = map._define.definitions;
+            if (constructorDefines && constructorDefines[prop]) {
+                return;
+            }
+            var instanceDefines = map._instanceDefinitions;
+            if (!instanceDefines) {
+                instanceDefines = map._instanceDefinitions = {};
+            }
+            if (!instanceDefines[prop]) {
+                var defaultDefinition = map._define.defaultDefinition || { type: define.types.observable };
+                define.property(map, prop, defaultDefinition, {}, {});
+                map._data[prop] = defaultDefinition.type ? defaultDefinition.type(value) : define.types.observable(value);
+                instanceDefines[prop] = defaultDefinition;
+                canBatch.start();
+                canEvent.dispatch.call(map, {
+                    type: '__keys',
+                    target: map
+                });
+                if (map._data[prop] !== undefined) {
+                    canEvent.dispatch.call(map, {
+                        type: prop,
+                        target: map
+                    }, [
+                        map._data[prop],
+                        undefined
+                    ]);
+                }
+                canBatch.stop();
+                return true;
+            }
+        },
+        getValue: function (map, name, val, how) {
+            if (how === 'serialize') {
+                var constructorDefinitions = map._define.definitions;
+                var propDef = constructorDefinitions[name];
+                if (propDef && typeof propDef.serialize === 'function') {
+                    return propDef.serialize.call(map, val, name);
+                }
+                var defaultDefinition = map._define.defaultDefinition;
+                if (defaultDefinition && typeof defaultDefinition.serialize === 'function') {
+                    return defaultDefinition.serialize.call(map, val, name);
+                }
+            }
+            if (hasMethod(val, how)) {
+                return val[how]();
+            } else {
+                return val;
+            }
+        },
+        serialize: function () {
+            var serializeMap = null;
+            return function (map, how, where) {
+                var cid = CID(map), firstSerialize = false;
+                if (!serializeMap) {
+                    firstSerialize = true;
+                    serializeMap = {
+                        get: {},
+                        serialize: {}
+                    };
+                }
+                serializeMap[how][cid] = where;
+                map.each(function (val, name) {
+                    var result, isObservable = hasMethod(val, how), serialized = isObservable && serializeMap[how][CID(val)];
+                    if (serialized) {
+                        result = serialized;
                     } else {
-                        var props = {};
-                        props[idProp] = this[idProp];
-                        return connection.Map.get(props);
+                        result = defineHelpers.getValue(map, name, val, how);
                     }
-                }
-            },
-            _state: {
-                get: function (lastSet, resolve) {
-                    if (resolve) {
-                        this.promise.then(function () {
-                            resolve('resolved');
-                        }, function () {
-                            resolve('rejected');
-                        });
-                    }
-                    return 'pending';
-                }
-            },
-            value: {
-                get: function (lastSet, resolve) {
-                    if (this._value) {
-                        return this._value;
-                    } else if (resolve) {
-                        this.promise.then(function (value) {
-                            resolve(value);
-                        });
-                    }
-                }
-            },
-            reason: {
-                get: function (lastSet, resolve) {
-                    if (this._value) {
-                        return undefined;
-                    } else {
-                        this.promise.catch(function (value) {
-                            resolve(value);
-                        });
-                    }
-                }
-            }
-        };
-        defs[idProp] = {
-            type: '*',
-            set: function () {
-                this._value = undefined;
-            }
-        };
-        define(Ref.prototype, defs);
-        Ref.prototype.unobservedId = Observation.ignore(function () {
-            return this[idProp];
-        });
-        Ref.prototype.isResolved = function () {
-            return !!this._value || this._state === 'resolved';
-        };
-        Ref.prototype.isRejected = function () {
-            return this._state === 'rejected';
-        };
-        Ref.prototype.isPending = function () {
-            return !this._value && (this._state !== 'resolved' || this._state !== 'rejected');
-        };
-        Ref.prototype.serialize = function () {
-            return this[idProp];
-        };
-        var baseEventSetup = Ref.prototype._eventSetup;
-        Ref.prototype._eventSetup = function () {
-            Ref.store.addReference(this.unobservedId(), this);
-            return baseEventSetup.apply(this, arguments);
-        };
-        var baseTeardown = Ref.prototype._eventTeardown;
-        Ref.prototype._eventTeardown = function () {
-            Ref.store.deleteReference(this.unobservedId(), this);
-            return baseTeardown.apply(this, arguments);
-        };
-        constructorStore.requests.on('end', function () {
-            for (var id in Ref._requestInstances) {
-                Ref.store.deleteReference(id);
-            }
-            Ref._requestInstances = {};
-        });
-        return Ref;
-    };
-    module.exports = connect.behavior('can/ref', function (baseConnection) {
-        return {
-            init: function () {
-                baseConnection.init.apply(this, arguments);
-                this.Map.Ref = makeRef(this);
-            }
-        };
-    });
-});
-/*can-connect@1.3.8#data/callbacks/callbacks*/
-define('can-connect/data/callbacks/callbacks', function (require, exports, module) {
-    var connect = require('can-connect');
-    var each = require('can-util/js/each/each');
-    var pairs = {
-        getListData: 'gotListData',
-        createData: 'createdData',
-        updateData: 'updatedData',
-        destroyData: 'destroyedData'
-    };
-    module.exports = connect.behavior('data/callbacks', function (baseConnection) {
-        var behavior = {};
-        each(pairs, function (callbackName, name) {
-            behavior[name] = function (params, cid) {
-                var self = this;
-                return baseConnection[name].call(this, params).then(function (data) {
-                    if (self[callbackName]) {
-                        return self[callbackName].call(self, data, params, cid);
-                    } else {
-                        return data;
+                    if (result !== undefined) {
+                        where[name] = result;
                     }
                 });
+                if (firstSerialize) {
+                    serializeMap = null;
+                }
+                return where;
             };
-        });
-        return behavior;
-    });
+        }()
+    };
+    module.exports = defineHelpers;
 });
-/*can-connect@1.3.8#data/callbacks-cache/callbacks-cache*/
-define('can-connect/data/callbacks-cache/callbacks-cache', function (require, exports, module) {
-    var connect = require('can-connect');
+/*can-define@1.0.17#map/map*/
+define('can-define/map/map', function (require, exports, module) {
+    var Construct = require('can-construct');
+    var define = require('can-define');
     var assign = require('can-util/js/assign/assign');
-    var each = require('can-util/js/each/each');
-    var pairs = {
-        createdData: 'createData',
-        updatedData: 'updateData',
-        destroyedData: 'destroyData'
-    };
-    module.exports = connect.behavior('data/callbacks-cache', function (baseConnection) {
-        var behavior = {};
-        each(pairs, function (cacheCallback, dataCallbackName) {
-            behavior[dataCallbackName] = function (data, set, cid) {
-                this.cacheConnection[cacheCallback](assign(assign({}, set), data));
-                return baseConnection[dataCallbackName].call(this, data, set, cid);
-            };
-        });
-        return behavior;
-    });
-});
-/*can-connect@1.3.8#data/parse/parse*/
-define('can-connect/data/parse/parse', function (require, exports, module) {
-    var connect = require('can-connect');
-    var each = require('can-util/js/each/each');
     var isArray = require('can-util/js/is-array/is-array');
-    var getObject = require('can-util/js/get/get');
-    module.exports = connect.behavior('data/parse', function (baseConnection) {
-        var behavior = {
-            parseListData: function (responseData) {
-                if (baseConnection.parseListData) {
-                    responseData = baseConnection.parseListData.apply(this, arguments);
-                }
-                var result;
-                if (isArray(responseData)) {
-                    result = { data: responseData };
-                } else {
-                    var prop = this.parseListProp || 'data';
-                    responseData.data = getObject(responseData, prop);
-                    result = responseData;
-                    if (prop !== 'data') {
-                        delete responseData[prop];
-                    }
-                    if (!isArray(result.data)) {
-                        throw new Error('Could not get any raw data while converting using .parseListData');
-                    }
-                }
-                var arr = [];
-                for (var i = 0; i < result.data.length; i++) {
-                    arr.push(this.parseInstanceData(result.data[i]));
-                }
-                result.data = arr;
-                return result;
-            },
-            parseInstanceData: function (props) {
-                if (baseConnection.parseInstanceData) {
-                    props = baseConnection.parseInstanceData.apply(this, arguments) || props;
-                }
-                return this.parseInstanceProp ? getObject(props, this.parseInstanceProp) || props : props;
-            }
-        };
-        each(pairs, function (parseFunction, name) {
-            behavior[name] = function (params) {
-                var self = this;
-                return baseConnection[name].call(this, params).then(function () {
-                    return self[parseFunction].apply(self, arguments);
-                });
-            };
-        });
-        return behavior;
-    });
-    var pairs = {
-        getListData: 'parseListData',
-        getData: 'parseInstanceData',
-        createData: 'parseInstanceData',
-        updateData: 'parseInstanceData',
-        destroyData: 'parseInstanceData'
-    };
-});
-/*can-util@3.3.5#dom/ajax/ajax*/
-define('can-util/dom/ajax/ajax', function (require, exports, module) {
-    (function (global) {
-        var Global = require('can-util/js/global/global');
-        var assign = require('can-util/js/assign/assign');
-        var namespace = require('can-namespace');
-        var parseURI = require('can-util/js/parse-uri/parse-uri');
-        var param = require('can-util/js/param/param');
-        var xhrs = [
-                function () {
-                    return new XMLHttpRequest();
-                },
-                function () {
-                    return new ActiveXObject('Microsoft.XMLHTTP');
-                },
-                function () {
-                    return new ActiveXObject('MSXML2.XMLHTTP.3.0');
-                },
-                function () {
-                    return new ActiveXObject('MSXML2.XMLHTTP');
-                }
-            ], _xhrf = null;
-        var originUrl = parseURI(Global().location.href);
-        var makeXhr = function () {
-            if (_xhrf != null) {
-                return _xhrf();
-            }
-            for (var i = 0, l = xhrs.length; i < l; i++) {
-                try {
-                    var f = xhrs[i], req = f();
-                    if (req != null) {
-                        _xhrf = f;
-                        return req;
-                    }
-                } catch (e) {
-                    continue;
-                }
-            }
-            return function () {
-            };
-        };
-        var _xhrResp = function (xhr, options) {
-            switch (options.dataType || xhr.getResponseHeader('Content-Type').split(';')[0]) {
-            case 'text/xml':
-            case 'xml':
-                return xhr.responseXML;
-            case 'text/json':
-            case 'application/json':
-            case 'text/javascript':
-            case 'application/javascript':
-            case 'application/x-javascript':
-            case 'json':
-                return JSON.parse(xhr.responseText);
-            default:
-                return xhr.responseText;
-            }
-        };
-        module.exports = namespace.ajax = function (o) {
-            var xhr = makeXhr(), timer, n = 0;
-            var deferred = {};
-            var promise = new Promise(function (resolve, reject) {
-                deferred.resolve = resolve;
-                deferred.reject = reject;
-            });
-            var requestUrl;
-            promise.abort = function () {
-                xhr.abort();
-            };
-            o = assign({
-                userAgent: 'XMLHttpRequest',
-                lang: 'en',
-                type: 'GET',
-                data: null,
-                dataType: 'json'
-            }, o);
-            if (o.crossDomain == null) {
-                try {
-                    requestUrl = parseURI(o.url);
-                    o.crossDomain = !!(requestUrl.protocol && requestUrl.protocol !== originUrl.protocol || requestUrl.host && requestUrl.host !== originUrl.host);
-                } catch (e) {
-                    o.crossDomain = true;
-                }
-            }
-            if (o.timeout) {
-                timer = setTimeout(function () {
-                    xhr.abort();
-                    if (o.timeoutFn) {
-                        o.timeoutFn(o.url);
-                    }
-                }, o.timeout);
-            }
-            xhr.onreadystatechange = function () {
-                try {
-                    if (xhr.readyState === 4) {
-                        if (timer) {
-                            clearTimeout(timer);
-                        }
-                        if (xhr.status < 300) {
-                            if (o.success) {
-                                o.success(_xhrResp(xhr, o));
-                            }
-                        } else if (o.error) {
-                            o.error(xhr, xhr.status, xhr.statusText);
-                        }
-                        if (o.complete) {
-                            o.complete(xhr, xhr.statusText);
-                        }
-                        if (xhr.status >= 200 && xhr.status < 300) {
-                            deferred.resolve(_xhrResp(xhr, o));
-                        } else {
-                            deferred.reject(xhr);
-                        }
-                    } else if (o.progress) {
-                        o.progress(++n);
-                    }
-                } catch (e) {
-                    deferred.reject(e);
-                }
-            };
-            var url = o.url, data = null, type = o.type.toUpperCase();
-            var isPost = type === 'POST' || type === 'PUT';
-            if (!isPost && o.data) {
-                url += '?' + param(o.data);
-            }
-            xhr.open(type, url);
-            var isSimpleCors = o.crossDomain && [
-                'GET',
-                'POST',
-                'HEAD'
-            ].indexOf(type) !== -1;
-            if (isPost) {
-                var isJson = o.dataType.indexOf('json') >= 0;
-                data = isJson && !isSimpleCors ? typeof o.data === 'object' ? JSON.stringify(o.data) : o.data : param(o.data);
-                xhr.setRequestHeader('Content-Type', isJson && !isSimpleCors ? 'application/json' : 'application/x-www-form-urlencoded');
-            }
-            if (!isSimpleCors) {
-                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            }
-            xhr.send(data);
-            return promise;
-        };
-    }(function () {
-        return this;
-    }()));
-});
-/*can-util@3.3.5#js/is-promise-like/is-promise-like*/
-define('can-util/js/is-promise-like/is-promise-like', function (require, exports, module) {
-    module.exports = function (obj) {
-        return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
-    };
-});
-/*can-util@3.3.5#js/is-promise/is-promise*/
-define('can-util/js/is-promise/is-promise', function (require, exports, module) {
+    var isPlainObject = require('can-util/js/is-plain-object/is-plain-object');
+    var defineHelpers = require('can-define/define-helpers/define-helpers');
+    var Observation = require('can-observation');
     var types = require('can-types');
-    module.exports = function (obj) {
-        return types.isPromise(obj);
-    };
-});
-/*can-util@3.3.5#js/make-promise/make-promise*/
-define('can-util/js/make-promise/make-promise', function (require, exports, module) {
-    var isPromiseLike = require('can-util/js/is-promise-like/is-promise-like');
-    var isPromise = require('can-util/js/is-promise/is-promise');
-    module.exports = function (obj) {
-        if (isPromiseLike(obj) && !isPromise(obj)) {
-            return new Promise(function (resolve, reject) {
-                obj.then(resolve, reject);
-            });
-        } else {
-            return obj;
+    var canBatch = require('can-event/batch/batch');
+    var ns = require('can-namespace');
+    var canLog = require('can-util/js/log/log');
+    var readWithoutObserve = Observation.ignore(function (map, prop) {
+        return map[prop];
+    });
+    var eachDefinition = function (map, cb, thisarg, definitions, observe) {
+        for (var prop in definitions) {
+            var definition = definitions[prop];
+            if (typeof definition !== 'object' || ('serialize' in definition ? !!definition.serialize : !definition.get)) {
+                var item = observe === false ? readWithoutObserve(map, prop) : map[prop];
+                if (cb.call(thisarg || item, item, prop, map) === false) {
+                    return false;
+                }
+            }
         }
     };
+    var setProps = function (props, remove) {
+        props = assign({}, props);
+        var prop, self = this, newVal;
+        canBatch.start();
+        this.each(function (curVal, prop) {
+            if (prop === '_cid') {
+                return;
+            }
+            newVal = props[prop];
+            if (newVal === undefined) {
+                if (remove) {
+                    self[prop] = undefined;
+                }
+                return;
+            }
+            if (typeof curVal !== 'object' || curVal === null) {
+                self.set(prop, newVal);
+            } else if ('replace' in curVal && isArray(newVal)) {
+                curVal.replace(newVal);
+            } else if ('set' in curVal && (isPlainObject(newVal) || isArray(newVal))) {
+                curVal.set(newVal, remove);
+            } else if ('attr' in curVal && (isPlainObject(newVal) || isArray(newVal))) {
+                curVal.attr(newVal, remove);
+            } else if (curVal !== newVal) {
+                self.set(prop, newVal);
+            }
+            delete props[prop];
+        }, this, false);
+        for (prop in props) {
+            if (prop !== '_cid') {
+                newVal = props[prop];
+                this.set(prop, newVal);
+            }
+        }
+        canBatch.stop();
+        return this;
+    };
+    var DefineMap = Construct.extend('DefineMap', {
+        setup: function (base) {
+            if (DefineMap) {
+                var prototype = this.prototype;
+                define(prototype, prototype, base.prototype._define);
+                this.prototype.setup = function (props) {
+                    define.setup.call(this, defineHelpers.toObject(this, props, {}, DefineMap), this.constructor.seal);
+                };
+            }
+        }
+    }, {
+        setup: function (props, sealed) {
+            if (!this._define) {
+                Object.defineProperty(this, '_define', {
+                    enumerable: false,
+                    value: { definitions: {} }
+                });
+                Object.defineProperty(this, '_data', {
+                    enumerable: false,
+                    value: {}
+                });
+            }
+            define.setup.call(this, defineHelpers.toObject(this, props, {}, DefineMap), sealed === true);
+        },
+        get: function (prop) {
+            if (prop) {
+                var value = this[prop];
+                if (value !== undefined || prop in this || Object.isSealed(this)) {
+                    return value;
+                } else {
+                    Observation.add(this, prop);
+                    return this[prop];
+                }
+            } else {
+                return defineHelpers.serialize(this, 'get', {});
+            }
+        },
+        set: function (prop, value) {
+            if (typeof prop === 'object') {
+                return setProps.call(this, prop, value);
+            }
+            var defined = defineHelpers.defineExpando(this, prop, value);
+            if (!defined) {
+                this[prop] = value;
+            }
+            return this;
+        },
+        serialize: function () {
+            return defineHelpers.serialize(this, 'serialize', {});
+        },
+        forEach: function (cb, thisarg, observe) {
+            if (observe !== false) {
+                Observation.add(this, '__keys');
+            }
+            var res;
+            var constructorDefinitions = this._define.definitions;
+            if (constructorDefinitions) {
+                res = eachDefinition(this, cb, thisarg, constructorDefinitions, observe);
+            }
+            if (res === false) {
+                return this;
+            }
+            if (this._instanceDefinitions) {
+                eachDefinition(this, cb, thisarg, this._instanceDefinitions, observe);
+            }
+            return this;
+        },
+        '*': { type: define.types.observable }
+    });
+    for (var prop in define.eventsProto) {
+        DefineMap[prop] = define.eventsProto[prop];
+        Object.defineProperty(DefineMap.prototype, prop, {
+            enumerable: false,
+            value: define.eventsProto[prop],
+            writable: true
+        });
+    }
+    types.DefineMap = DefineMap;
+    types.DefaultMap = DefineMap;
+    DefineMap.prototype.toObject = function () {
+        canLog.warn('Use DefineMap::get instead of DefineMap::toObject');
+        return this.get();
+    };
+    DefineMap.prototype.each = DefineMap.prototype.forEach;
+    var oldIsMapLike = types.isMapLike;
+    types.isMapLike = function (obj) {
+        return obj instanceof DefineMap || oldIsMapLike.apply(this, arguments);
+    };
+    module.exports = ns.DefineMap = DefineMap;
 });
-/*can-connect@1.3.8#data/url/url*/
-define('can-connect/data/url/url', function (require, exports, module) {
-    var isArray = require('can-util/js/is-array/is-array');
+/*can-define@1.0.17#list/list*/
+define('can-define/list/list', function (require, exports, module) {
+    var Construct = require('can-construct');
+    var define = require('can-define');
+    var make = define.make;
+    var canEvent = require('can-event');
+    var canBatch = require('can-event/batch/batch');
+    var Observation = require('can-observation');
+    var canLog = require('can-util/js/log/log');
+    var defineHelpers = require('can-define/define-helpers/define-helpers');
     var assign = require('can-util/js/assign/assign');
     var each = require('can-util/js/each/each');
-    var ajax = require('can-util/dom/ajax/ajax');
-    var string = require('can-util/js/string/string');
-    var getIdProps = require('can-connect/helpers/get-id-props');
-    var dev = require('can-util/js/dev/dev');
-    var connect = require('can-connect');
-    var makePromise = require('can-util/js/make-promise/make-promise');
-    module.exports = connect.behavior('data/url', function (baseConnection) {
-        var behavior = {};
-        each(pairs, function (reqOptions, name) {
-            behavior[name] = function (params) {
-                if (typeof this.url === 'object') {
-                    if (typeof this.url[reqOptions.prop] === 'function') {
-                        return makePromise(this.url[reqOptions.prop](params));
-                    } else if (this.url[reqOptions.prop]) {
-                        return makePromise(makeAjax(this.url[reqOptions.prop], params, reqOptions.type, this.ajax || ajax, findContentType(this.url), reqOptions));
+    var isArray = require('can-util/js/is-array/is-array');
+    var makeArray = require('can-util/js/make-array/make-array');
+    var types = require('can-types');
+    var ns = require('can-namespace');
+    var splice = [].splice;
+    var identity = function (x) {
+        return x;
+    };
+    var makeFilterCallback = function (props) {
+        return function (item) {
+            for (var prop in props) {
+                if (item[prop] !== props[prop]) {
+                    return false;
+                }
+            }
+            return true;
+        };
+    };
+    var DefineList = Construct.extend('DefineList', {
+        setup: function (base) {
+            if (DefineList) {
+                var prototype = this.prototype;
+                var result = define(prototype, prototype, base.prototype._define);
+                var itemsDefinition = result.definitions['#'] || result.defaultDefinition;
+                if (itemsDefinition) {
+                    if (itemsDefinition.Type) {
+                        this.prototype.__type = make.set.Type('*', itemsDefinition.Type, identity);
+                    } else if (itemsDefinition.type) {
+                        this.prototype.__type = make.set.type('*', itemsDefinition.type, identity);
                     }
                 }
-                var resource = typeof this.url === 'string' ? this.url : this.url.resource;
-                if (resource) {
-                    var idProps = getIdProps(this);
-                    return makePromise(makeAjax(createURLFromResource(resource, idProps[0], reqOptions.prop), params, reqOptions.type, this.ajax || ajax, findContentType(this.url), reqOptions));
+            }
+        }
+    }, {
+        setup: function (items) {
+            if (!this._define) {
+                Object.defineProperty(this, '_define', {
+                    enumerable: false,
+                    value: { definitions: {} }
+                });
+                Object.defineProperty(this, '_data', {
+                    enumerable: false,
+                    value: {}
+                });
+            }
+            define.setup.call(this, {}, false);
+            this._length = 0;
+            if (items) {
+                this.splice.apply(this, [
+                    0,
+                    0
+                ].concat(defineHelpers.toObject(this, items, [], DefineList)));
+            }
+        },
+        __type: define.types.observable,
+        _triggerChange: function (attr, how, newVal, oldVal) {
+            canBatch.start();
+            var index = +attr;
+            if (!~('' + attr).indexOf('.') && !isNaN(index)) {
+                var itemsDefinition = this._define.definitions['#'];
+                if (how === 'add') {
+                    if (itemsDefinition && typeof itemsDefinition.added === 'function') {
+                        Observation.ignore(itemsDefinition.added).call(this, newVal, index);
+                    }
+                    canEvent.dispatch.call(this, how, [
+                        newVal,
+                        index
+                    ]);
+                    canEvent.dispatch.call(this, 'length', [this._length]);
+                } else if (how === 'remove') {
+                    if (itemsDefinition && typeof itemsDefinition.removed === 'function') {
+                        Observation.ignore(itemsDefinition.removed).call(this, oldVal, index);
+                    }
+                    canEvent.dispatch.call(this, how, [
+                        oldVal,
+                        index
+                    ]);
+                    canEvent.dispatch.call(this, 'length', [this._length]);
+                } else {
+                    canEvent.dispatch.call(this, how, [
+                        newVal,
+                        index
+                    ]);
                 }
-                return baseConnection[name].call(this, params);
-            };
-        });
-        return behavior;
-    });
-    var pairs = {
-        getListData: {
-            prop: 'getListData',
-            type: 'GET'
-        },
-        getData: {
-            prop: 'getData',
-            type: 'GET'
-        },
-        createData: {
-            prop: 'createData',
-            type: 'POST'
-        },
-        updateData: {
-            prop: 'updateData',
-            type: 'PUT'
-        },
-        destroyData: {
-            prop: 'destroyData',
-            type: 'DELETE',
-            includeData: false
-        }
-    };
-    var findContentType = function (url) {
-        if (typeof url === 'object' && url.contentType) {
-            var acceptableType = url.contentType === 'application/x-www-form-urlencoded' || url.contentType === 'application/json';
-            if (acceptableType) {
-                return url.contentType;
             } else {
-                dev.warn('Unacceptable contentType on can-connect request. ' + 'Use \'application/json\' or \'application/x-www-form-urlencoded\'');
+                canEvent.dispatch.call(this, {
+                    type: '' + attr,
+                    target: this
+                }, [
+                    newVal,
+                    oldVal
+                ]);
             }
-        }
-        return 'application/json';
-    };
-    var makeAjax = function (ajaxOb, data, type, ajax, contentType, reqOptions) {
-        var params = {};
-        if (typeof ajaxOb === 'string') {
-            var parts = ajaxOb.split(/\s+/);
-            params.url = parts.pop();
-            if (parts.length) {
-                params.type = parts.pop();
+            canBatch.stop();
+        },
+        get: function (index) {
+            if (arguments.length) {
+                Observation.add(this, '' + index);
+                return this[index];
+            } else {
+                return defineHelpers.serialize(this, 'get', []);
             }
-        } else {
-            assign(params, ajaxOb);
+        },
+        set: function (prop, value) {
+            if (typeof prop !== 'object') {
+                prop = isNaN(+prop) || prop % 1 ? prop : +prop;
+                if (typeof prop === 'number') {
+                    if (typeof prop === 'number' && prop > this._length - 1) {
+                        var newArr = new Array(prop + 1 - this._length);
+                        newArr[newArr.length - 1] = value;
+                        this.push.apply(this, newArr);
+                        return newArr;
+                    }
+                    this.splice(prop, 1, value);
+                } else {
+                    var defined = defineHelpers.defineExpando(this, prop, value);
+                    if (!defined) {
+                        this[prop] = value;
+                    }
+                }
+            } else {
+                if (isArray(prop)) {
+                    if (value) {
+                        this.replace(prop);
+                    } else {
+                        this.splice.apply(this, [
+                            0,
+                            prop.length
+                        ].concat(prop));
+                    }
+                } else {
+                    each(prop, function (value, prop) {
+                        this.set(prop, value);
+                    }, this);
+                }
+            }
+            return this;
+        },
+        _items: function () {
+            var arr = [];
+            this._each(function (item) {
+                arr.push(item);
+            });
+            return arr;
+        },
+        _each: function (callback) {
+            for (var i = 0, len = this._length; i < len; i++) {
+                callback(this[i], i);
+            }
+        },
+        splice: function (index, howMany) {
+            var args = makeArray(arguments), added = [], i, len, listIndex, allSame = args.length > 2;
+            index = index || 0;
+            for (i = 0, len = args.length - 2; i < len; i++) {
+                listIndex = i + 2;
+                args[listIndex] = this.__type(args[listIndex], listIndex);
+                added.push(args[listIndex]);
+                if (this[i + index] !== args[listIndex]) {
+                    allSame = false;
+                }
+            }
+            if (allSame && this._length <= added.length) {
+                return added;
+            }
+            if (howMany === undefined) {
+                howMany = args[1] = this._length - index;
+            }
+            var removed = splice.apply(this, args);
+            canBatch.start();
+            if (howMany > 0) {
+                this._triggerChange('' + index, 'remove', undefined, removed);
+            }
+            if (args.length > 2) {
+                this._triggerChange('' + index, 'add', added, removed);
+            }
+            canBatch.stop();
+            return removed;
+        },
+        serialize: function () {
+            return defineHelpers.serialize(this, 'serialize', []);
         }
-        params.data = typeof data === 'object' && !isArray(data) ? assign(params.data || {}, data) : data;
-        params.url = string.sub(params.url, params.data, true);
-        var encodeJSON = contentType !== 'application/x-www-form-urlencoded' && (type && (type === 'POST' || type === 'PUT'));
-        if (encodeJSON) {
-            params.data = JSON.stringify(params.data);
-            params.contentType = contentType;
-        }
-        if (reqOptions.includeData === false) {
-            delete params.data;
-        }
-        return ajax(assign({
-            type: type || 'post',
-            dataType: 'json'
-        }, params));
+    });
+    var getArgs = function (args) {
+        return args[0] && Array.isArray(args[0]) ? args[0] : makeArray(args);
     };
-    var createURLFromResource = function (resource, idProp, name) {
-        var url = resource.replace(/\/+$/, '');
-        if (name === 'getListData' || name === 'createData') {
-            return url;
+    each({
+        push: 'length',
+        unshift: 0
+    }, function (where, name) {
+        var orig = [][name];
+        DefineList.prototype[name] = function () {
+            var args = [], len = where ? this._length : 0, i = arguments.length, res, val;
+            while (i--) {
+                val = arguments[i];
+                args[i] = this.__type(val, i);
+            }
+            res = orig.apply(this, args);
+            if (!this.comparator || args.length) {
+                this._triggerChange('' + len, 'add', args, undefined);
+            }
+            return res;
+        };
+    });
+    each({
+        pop: 'length',
+        shift: 0
+    }, function (where, name) {
+        DefineList.prototype[name] = function () {
+            if (!this._length) {
+                return undefined;
+            }
+            var args = getArgs(arguments), len = where && this._length ? this._length - 1 : 0;
+            var res = [][name].apply(this, args);
+            this._triggerChange('' + len, 'remove', undefined, [res]);
+            return res;
+        };
+    });
+    assign(DefineList.prototype, {
+        indexOf: function (item, fromIndex) {
+            for (var i = fromIndex || 0, len = this.length; i < len; i++) {
+                if (this.get(i) === item) {
+                    return i;
+                }
+            }
+            return -1;
+        },
+        join: function () {
+            Observation.add(this, 'length');
+            return [].join.apply(this, arguments);
+        },
+        reverse: function () {
+            var list = [].reverse.call(this._items());
+            return this.replace(list);
+        },
+        slice: function () {
+            Observation.add(this, 'length');
+            var temp = Array.prototype.slice.apply(this, arguments);
+            return new this.constructor(temp);
+        },
+        concat: function () {
+            var args = [];
+            each(arguments, function (arg) {
+                if (types.isListLike(arg) || Array.isArray(arg)) {
+                    var arr = types.isListLike(arg) ? makeArray(arg) : arg;
+                    each(arr, function (innerArg) {
+                        args.push(this.__type(innerArg));
+                    }, this);
+                } else {
+                    args.push(this.__type(arg));
+                }
+            }, this);
+            return new this.constructor(Array.prototype.concat.apply(makeArray(this), args));
+        },
+        forEach: function (cb, thisarg) {
+            var item;
+            for (var i = 0, len = this.length; i < len; i++) {
+                item = this.get(i);
+                if (cb.call(thisarg || item, item, i, this) === false) {
+                    break;
+                }
+            }
+            return this;
+        },
+        replace: function (newList) {
+            this.splice.apply(this, [
+                0,
+                this._length
+            ].concat(makeArray(newList || [])));
+            return this;
+        },
+        filter: function (callback, thisArg) {
+            var filteredList = [], self = this, filtered;
+            if (typeof callback === 'object') {
+                callback = makeFilterCallback(callback);
+            }
+            this.each(function (item, index, list) {
+                filtered = callback.call(thisArg | self, item, index, self);
+                if (filtered) {
+                    filteredList.push(item);
+                }
+            });
+            return new this.constructor(filteredList);
+        },
+        map: function (callback, thisArg) {
+            var mappedList = [], self = this;
+            this.each(function (item, index, list) {
+                var mapped = callback.call(thisArg | self, item, index, self);
+                mappedList.push(mapped);
+            });
+            return new this.constructor(mappedList);
+        },
+        sort: function (compareFunction) {
+            var removed = Array.prototype.slice.call(this);
+            Array.prototype.sort.call(this, compareFunction);
+            var added = Array.prototype.slice.call(this);
+            canBatch.start();
+            canEvent.dispatch.call(this, 'remove', [
+                removed,
+                0
+            ]);
+            canEvent.dispatch.call(this, 'add', [
+                added,
+                0
+            ]);
+            canEvent.dispatch.call(this, 'length', [
+                this._length,
+                this._length
+            ]);
+            canBatch.stop();
+            return this;
+        }
+    });
+    for (var prop in define.eventsProto) {
+        DefineList[prop] = define.eventsProto[prop];
+        Object.defineProperty(DefineList.prototype, prop, {
+            enumerable: false,
+            value: define.eventsProto[prop],
+            writable: true
+        });
+    }
+    Object.defineProperty(DefineList.prototype, 'length', {
+        get: function () {
+            if (!this.__inSetup) {
+                Observation.add(this, 'length');
+            }
+            return this._length;
+        },
+        set: function (newVal) {
+            this._length = newVal;
+        },
+        enumerable: true
+    });
+    var oldIsListLike = types.isListLike;
+    types.isListLike = function (obj) {
+        return obj instanceof DefineList || oldIsListLike.apply(this, arguments);
+    };
+    DefineList.prototype.each = DefineList.prototype.forEach;
+    DefineList.prototype.attr = function (prop, value) {
+        canLog.warn('DefineMap::attr shouldn\'t be called');
+        if (arguments.length === 0) {
+            return this.get();
+        } else if (prop && typeof prop === 'object') {
+            return this.set.apply(this, arguments);
+        } else if (arguments.length === 1) {
+            return this.get(prop);
         } else {
-            return url + '/{' + idProp + '}';
+            return this.set(prop, value);
         }
     };
+    DefineList.prototype.item = function (index, value) {
+        if (arguments.length === 1) {
+            return this.get(index);
+        } else {
+            return this.set(index, value);
+        }
+    };
+    DefineList.prototype.items = function () {
+        canLog.warn('DefineList::get should should be used instead of DefineList::items');
+        return this.get();
+    };
+    types.DefineList = DefineList;
+    types.DefaultList = DefineList;
+    module.exports = ns.DefineList = DefineList;
 });
 /*can-set@1.1.0#src/helpers*/
 define('can-set/src/helpers', function (require, exports, module) {
@@ -12741,882 +12018,125 @@ define('can-set', function (require, exports, module) {
     set.clause = clause;
     module.exports = ns.set = set;
 });
-/*can-connect@1.3.8#helpers/set-add*/
-define('can-connect/helpers/set-add', function (require, exports, module) {
-    var canSet = require('can-set');
-    module.exports = function (connection, setItems, items, item, algebra) {
-        var index = canSet.index(setItems, items, item, algebra);
-        if (index === undefined) {
-            index = items.length;
-        }
-        var copy = items.slice(0);
-        copy.splice(index, 0, item);
-        return copy;
-    };
-});
-/*can-connect@1.3.8#helpers/get-index-by-id*/
-define('can-connect/helpers/get-index-by-id', function (require, exports, module) {
-    module.exports = function (connection, props, items) {
-        var id = connection.id(props);
-        for (var i = 0; i < items.length; i++) {
-            var connId = connection.id(items[i]);
-            if (id == connId) {
-                return i;
+/*can-connect@1.3.8#connect*/
+define('can-connect/connect', function (require, exports, module) {
+    var assign = require('can-util/js/assign/assign');
+    var connect = function (behaviors, options) {
+        behaviors = behaviors.map(function (behavior, index) {
+            var sortedIndex = -1;
+            if (typeof behavior === 'string') {
+                sortedIndex = connect.order.indexOf(behavior);
+                behavior = behaviorsMap[behavior];
+            } else if (behavior.isBehavior) {
+                sortedIndex = connect.order.indexOf(behavior.behaviorName);
+            } else {
+                behavior = connect.behavior(behavior);
             }
-        }
-        return -1;
-    };
-});
-/*can-connect@1.3.8#real-time/real-time*/
-define('can-connect/real-time/real-time', function (require, exports, module) {
-    var connect = require('can-connect');
-    var canSet = require('can-set');
-    var setAdd = require('can-connect/helpers/set-add');
-    var indexOf = require('can-connect/helpers/get-index-by-id');
-    var canDev = require('can-util/js/dev/dev');
-    module.exports = connect.behavior('real-time', function (baseConnection) {
-        return {
-            createInstance: function (props) {
-                var id = this.id(props);
-                var instance = this.instanceStore.get(id);
-                var serialized;
-                if (instance) {
-                    return this.updateInstance(props);
-                } else {
-                    instance = this.hydrateInstance(props);
-                    serialized = this.serializeInstance(instance);
-                    var self = this;
-                    this.addInstanceReference(instance);
-                    return Promise.resolve(this.createdData(props, serialized)).then(function () {
-                        self.deleteInstanceReference(instance);
-                        return instance;
-                    });
-                }
-            },
-            createdData: function (props, params, cid) {
-                var instance;
-                if (cid !== undefined) {
-                    instance = this.cidStore.get(cid);
-                } else {
-                    instance = this.instanceStore.get(this.id(props));
-                }
-                this.addInstanceReference(instance, this.id(props));
-                this.createdInstance(instance, props);
-                create.call(this, this.serializeInstance(instance));
-                this.deleteInstanceReference(instance);
-                return undefined;
-            },
-            updatedData: function (props, params) {
-                var instance = this.instanceStore.get(this.id(params));
-                this.updatedInstance(instance, props);
-                update.call(this, this.serializeInstance(instance));
-                return undefined;
-            },
-            updateInstance: function (props) {
-                var id = this.id(props);
-                var instance = this.instanceStore.get(id);
-                if (!instance) {
-                    instance = this.hydrateInstance(props);
-                }
-                this.addInstanceReference(instance);
-                var serialized = this.serializeInstance(instance), self = this;
-                return Promise.resolve(this.updatedData(props, serialized)).then(function () {
-                    self.deleteInstanceReference(instance);
-                    return instance;
-                });
-            },
-            destroyedData: function (props, params) {
-                var id = this.id(params || props);
-                var instance = this.instanceStore.get(id);
-                if (!instance) {
-                    instance = this.hydrateInstance(props);
-                }
-                var serialized = this.serializeInstance(instance);
-                this.destroyedInstance(instance, props);
-                destroy.call(this, serialized);
-                return undefined;
-            },
-            destroyInstance: function (props) {
-                var id = this.id(props);
-                var instance = this.instanceStore.get(id);
-                if (!instance) {
-                    instance = this.hydrateInstance(props);
-                }
-                this.addInstanceReference(instance);
-                var serialized = this.serializeInstance(instance), self = this;
-                return Promise.resolve(this.destroyedData(props, serialized)).then(function () {
-                    self.deleteInstanceReference(instance);
-                    return instance;
-                });
-            },
-            gotListData: function (items, set) {
-                var self = this;
-                if (this.algebra) {
-                    for (var item, i = 0, l = items.data.length; i < l; i++) {
-                        item = items.data[i];
-                        if (!self.algebra.has(set, item)) {
-                            var msg = 'One or more items were retrieved which do not match the \'Set\' parameters used to load them. ' + 'Read the docs for more information: http://v3.canjs.com/doc/can-set.html#SolvingCommonIssues' + '\n\nBelow are the \'Set\' parameters:' + '\n' + JSON.stringify(set, null, '  ') + '\n\nAnd below is an item which does not match those parameters:' + '\n' + JSON.stringify(item, null, '  ');
-                            canDev.warn(msg);
-                            break;
-                        }
-                    }
-                }
-                return Promise.resolve(items);
-            }
-        };
-    });
-    var create = function (props) {
-        var self = this;
-        this.listStore.forEach(function (list, id) {
-            var set = JSON.parse(id);
-            var index = indexOf(self, props, list);
-            if (canSet.has(set, props, self.algebra)) {
-                if (index === -1) {
-                    var items = self.serializeList(list);
-                    self.updatedList(list, { data: setAdd(self, set, items, props, self.algebra) }, set);
-                } else {
-                }
-            }
-        });
-    };
-    var update = function (props) {
-        var self = this;
-        this.listStore.forEach(function (list, id) {
-            var items;
-            var set = JSON.parse(id);
-            var index = indexOf(self, props, list);
-            if (canSet.has(set, props, self.algebra)) {
-                items = self.serializeList(list);
-                if (index === -1) {
-                    self.updatedList(list, { data: setAdd(self, set, items, props, self.algebra) }, set);
-                } else {
-                    var sortedIndex = canSet.index(set, items, props, self.algebra);
-                    if (sortedIndex !== undefined && sortedIndex !== index) {
-                        var copy = items.slice(0);
-                        if (index < sortedIndex) {
-                            copy.splice(sortedIndex, 0, props);
-                            copy.splice(index, 1);
-                        } else {
-                            copy.splice(index, 1);
-                            copy.splice(sortedIndex, 0, props);
-                        }
-                        self.updatedList(list, { data: copy }, set);
-                    }
-                }
-            } else if (index !== -1) {
-                items = self.serializeList(list);
-                items.splice(index, 1);
-                self.updatedList(list, { data: items }, set);
-            }
-        });
-    };
-    var destroy = function (props) {
-        var self = this;
-        this.listStore.forEach(function (list, id) {
-            var set = JSON.parse(id);
-            var index = indexOf(self, props, list);
-            if (index !== -1) {
-                var items = self.serializeList(list);
-                items.splice(index, 1);
-                self.updatedList(list, { data: items }, set);
-            }
-        });
-    };
-});
-/*can-connect@1.3.8#constructor/callbacks-once/callbacks-once*/
-define('can-connect/constructor/callbacks-once/callbacks-once', function (require, exports, module) {
-    var connect = require('can-connect');
-    var sortedSetJSON = require('can-connect/helpers/sorted-set-json');
-    var forEach = [].forEach;
-    var callbacks = [
-        'createdInstance',
-        'updatedInstance',
-        'destroyedInstance'
-    ];
-    module.exports = connect.behavior('constructor/callbacks-once', function (baseConnection) {
-        var behavior = {};
-        forEach.call(callbacks, function (name) {
-            behavior[name] = function (instance, data) {
-                var lastSerialized = this.getInstanceMetaData(instance, 'last-data-' + name);
-                var serialize = sortedSetJSON(data);
-                if (lastSerialized !== serialize) {
-                    var result = baseConnection[name].apply(this, arguments);
-                    this.addInstanceMetaData(instance, 'last-data-' + name, serialize);
-                    return result;
-                }
+            return {
+                originalIndex: index,
+                sortedIndex: sortedIndex,
+                behavior: behavior
             };
+        }).sort(function (b1, b2) {
+            if (~b1.sortedIndex && ~b2.sortedIndex) {
+                return b1.sortedIndex - b2.sortedIndex;
+            }
+            return b1.originalIndex - b2.originalIndex;
         });
+        behaviors = behaviors.map(function (b) {
+            return b.behavior;
+        });
+        var behavior = connect.base(connect.behavior('options', function () {
+            return options;
+        })());
+        behaviors.forEach(function (behave) {
+            behavior = behave(behavior);
+        });
+        if (behavior.init) {
+            behavior.init();
+        }
         return behavior;
-    });
-});
-/*can-connect@1.3.8#can/base-map/base-map*/
-define('can-connect/can/base-map/base-map', function (require, exports, module) {
-    var connect = require('can-connect');
-    var constructor = require('can-connect/constructor/constructor');
-    var canMap = require('can-connect/can/map/map');
-    var canRef = require('can-connect/can/ref/ref');
-    var constructorStore = require('can-connect/constructor/store/store');
-    var dataCallbacks = require('can-connect/data/callbacks/callbacks');
-    var callbacksCache = require('can-connect/data/callbacks-cache/callbacks-cache');
-    var dataParse = require('can-connect/data/parse/parse');
-    var dataUrl = require('can-connect/data/url/url');
-    var realTime = require('can-connect/real-time/real-time');
-    var callbacksOnce = require('can-connect/constructor/callbacks-once/callbacks-once');
-    var $ = require('jquery');
-    connect.baseMap = function (options) {
-        var behaviors = [
-            constructor,
-            canMap,
-            canRef,
-            constructorStore,
-            dataCallbacks,
-            dataParse,
-            dataUrl,
-            realTime,
-            callbacksOnce
-        ];
-        if ($ && $.ajax) {
-            options.ajax = $.ajax;
+    };
+    connect.order = [
+        'data/localstorage-cache',
+        'data/url',
+        'data/parse',
+        'cache-requests',
+        'data/combine-requests',
+        'constructor',
+        'constructor/store',
+        'can/map',
+        'can/ref',
+        'fall-through-cache',
+        'data/worker',
+        'real-time',
+        'data/callbacks-cache',
+        'data/callbacks',
+        'constructor/callbacks-once'
+    ];
+    connect.behavior = function (name, behavior) {
+        if (typeof name !== 'string') {
+            behavior = name;
+            name = undefined;
         }
-        return connect(behaviors, options);
-    };
-    module.exports = connect.baseMap;
-});
-/*can-define@1.0.17#define-helpers/define-helpers*/
-define('can-define/define-helpers/define-helpers', function (require, exports, module) {
-    var assign = require('can-util/js/assign/assign');
-    var CID = require('can-cid');
-    var define = require('can-define');
-    var canBatch = require('can-event/batch/batch');
-    var canEvent = require('can-event');
-    var hasMethod = function (obj, method) {
-        return obj && typeof obj === 'object' && method in obj;
-    };
-    var defineHelpers = {
-        extendedSetup: function (props) {
-            assign(this, props);
-        },
-        toObject: function (map, props, where, Type) {
-            if (props instanceof Type) {
-                props.each(function (value, prop) {
-                    where[prop] = value;
-                });
-                return where;
-            } else {
-                return props;
-            }
-        },
-        defineExpando: function (map, prop, value) {
-            var constructorDefines = map._define.definitions;
-            if (constructorDefines && constructorDefines[prop]) {
-                return;
-            }
-            var instanceDefines = map._instanceDefinitions;
-            if (!instanceDefines) {
-                instanceDefines = map._instanceDefinitions = {};
-            }
-            if (!instanceDefines[prop]) {
-                var defaultDefinition = map._define.defaultDefinition || { type: define.types.observable };
-                define.property(map, prop, defaultDefinition, {}, {});
-                map._data[prop] = defaultDefinition.type ? defaultDefinition.type(value) : define.types.observable(value);
-                instanceDefines[prop] = defaultDefinition;
-                canBatch.start();
-                canEvent.dispatch.call(map, {
-                    type: '__keys',
-                    target: map
-                });
-                if (map._data[prop] !== undefined) {
-                    canEvent.dispatch.call(map, {
-                        type: prop,
-                        target: map
-                    }, [
-                        map._data[prop],
-                        undefined
-                    ]);
-                }
-                canBatch.stop();
-                return true;
-            }
-        },
-        getValue: function (map, name, val, how) {
-            if (how === 'serialize') {
-                var constructorDefinitions = map._define.definitions;
-                var propDef = constructorDefinitions[name];
-                if (propDef && typeof propDef.serialize === 'function') {
-                    return propDef.serialize.call(map, val, name);
-                }
-                var defaultDefinition = map._define.defaultDefinition;
-                if (defaultDefinition && typeof defaultDefinition.serialize === 'function') {
-                    return defaultDefinition.serialize.call(map, val, name);
-                }
-            }
-            if (hasMethod(val, how)) {
-                return val[how]();
-            } else {
-                return val;
-            }
-        },
-        serialize: function () {
-            var serializeMap = null;
-            return function (map, how, where) {
-                var cid = CID(map), firstSerialize = false;
-                if (!serializeMap) {
-                    firstSerialize = true;
-                    serializeMap = {
-                        get: {},
-                        serialize: {}
-                    };
-                }
-                serializeMap[how][cid] = where;
-                map.each(function (val, name) {
-                    var result, isObservable = hasMethod(val, how), serialized = isObservable && serializeMap[how][CID(val)];
-                    if (serialized) {
-                        result = serialized;
-                    } else {
-                        result = defineHelpers.getValue(map, name, val, how);
-                    }
-                    if (result !== undefined) {
-                        where[name] = result;
-                    }
-                });
-                if (firstSerialize) {
-                    serializeMap = null;
-                }
-                return where;
+        var behaviorMixin = function (base) {
+            var Behavior = function () {
             };
-        }()
+            Behavior.name = name;
+            Behavior.prototype = base;
+            var newBehavior = new Behavior();
+            var res = typeof behavior === 'function' ? behavior.apply(newBehavior, arguments) : behavior;
+            assign(newBehavior, res);
+            newBehavior.__behaviorName = name;
+            return newBehavior;
+        };
+        if (name) {
+            behaviorMixin.behaviorName = name;
+            behaviorsMap[name] = behaviorMixin;
+        }
+        behaviorMixin.isBehavior = true;
+        return behaviorMixin;
     };
-    module.exports = defineHelpers;
+    var behaviorsMap = {};
+    module.exports = connect;
 });
-/*can-define@1.0.17#map/map*/
-define('can-define/map/map', function (require, exports, module) {
-    var Construct = require('can-construct');
-    var define = require('can-define');
-    var assign = require('can-util/js/assign/assign');
-    var isArray = require('can-util/js/is-array/is-array');
-    var isPlainObject = require('can-util/js/is-plain-object/is-plain-object');
-    var defineHelpers = require('can-define/define-helpers/define-helpers');
-    var Observation = require('can-observation');
-    var types = require('can-types');
-    var canBatch = require('can-event/batch/batch');
-    var ns = require('can-namespace');
-    var canLog = require('can-util/js/log/log');
-    var readWithoutObserve = Observation.ignore(function (map, prop) {
-        return map[prop];
+/*can-connect@1.3.8#base/base*/
+define('can-connect/base/base', function (require, exports, module) {
+    var connect = require('can-connect/connect');
+    module.exports = connect.behavior('base', function (baseConnection) {
+        return {
+            id: function (instance) {
+                var ids = [], algebra = this.algebra;
+                if (algebra && algebra.clauses && algebra.clauses.id) {
+                    for (var prop in algebra.clauses.id) {
+                        ids.push(instance[prop]);
+                    }
+                }
+                if (this.idProp && !ids.length) {
+                    ids.push(instance[this.idProp]);
+                }
+                if (!ids.length) {
+                    ids.push(instance.id);
+                }
+                return ids.length > 1 ? ids.join('@|@') : ids[0];
+            },
+            idProp: baseConnection.idProp || 'id',
+            listSet: function (list) {
+                return list[this.listSetProp];
+            },
+            listSetProp: '__listSet',
+            init: function () {
+            }
+        };
     });
-    var eachDefinition = function (map, cb, thisarg, definitions, observe) {
-        for (var prop in definitions) {
-            var definition = definitions[prop];
-            if (typeof definition !== 'object' || ('serialize' in definition ? !!definition.serialize : !definition.get)) {
-                var item = observe === false ? readWithoutObserve(map, prop) : map[prop];
-                if (cb.call(thisarg || item, item, prop, map) === false) {
-                    return false;
-                }
-            }
-        }
-    };
-    var setProps = function (props, remove) {
-        props = assign({}, props);
-        var prop, self = this, newVal;
-        canBatch.start();
-        this.each(function (curVal, prop) {
-            if (prop === '_cid') {
-                return;
-            }
-            newVal = props[prop];
-            if (newVal === undefined) {
-                if (remove) {
-                    self[prop] = undefined;
-                }
-                return;
-            }
-            if (typeof curVal !== 'object' || curVal === null) {
-                self.set(prop, newVal);
-            } else if ('replace' in curVal && isArray(newVal)) {
-                curVal.replace(newVal);
-            } else if ('set' in curVal && (isPlainObject(newVal) || isArray(newVal))) {
-                curVal.set(newVal, remove);
-            } else if ('attr' in curVal && (isPlainObject(newVal) || isArray(newVal))) {
-                curVal.attr(newVal, remove);
-            } else if (curVal !== newVal) {
-                self.set(prop, newVal);
-            }
-            delete props[prop];
-        }, this, false);
-        for (prop in props) {
-            if (prop !== '_cid') {
-                newVal = props[prop];
-                this.set(prop, newVal);
-            }
-        }
-        canBatch.stop();
-        return this;
-    };
-    var DefineMap = Construct.extend('DefineMap', {
-        setup: function (base) {
-            if (DefineMap) {
-                var prototype = this.prototype;
-                define(prototype, prototype, base.prototype._define);
-                this.prototype.setup = function (props) {
-                    define.setup.call(this, defineHelpers.toObject(this, props, {}, DefineMap), this.constructor.seal);
-                };
-            }
-        }
-    }, {
-        setup: function (props, sealed) {
-            if (!this._define) {
-                Object.defineProperty(this, '_define', {
-                    enumerable: false,
-                    value: { definitions: {} }
-                });
-                Object.defineProperty(this, '_data', {
-                    enumerable: false,
-                    value: {}
-                });
-            }
-            define.setup.call(this, defineHelpers.toObject(this, props, {}, DefineMap), sealed === true);
-        },
-        get: function (prop) {
-            if (prop) {
-                var value = this[prop];
-                if (value !== undefined || prop in this || Object.isSealed(this)) {
-                    return value;
-                } else {
-                    Observation.add(this, prop);
-                    return this[prop];
-                }
-            } else {
-                return defineHelpers.serialize(this, 'get', {});
-            }
-        },
-        set: function (prop, value) {
-            if (typeof prop === 'object') {
-                return setProps.call(this, prop, value);
-            }
-            var defined = defineHelpers.defineExpando(this, prop, value);
-            if (!defined) {
-                this[prop] = value;
-            }
-            return this;
-        },
-        serialize: function () {
-            return defineHelpers.serialize(this, 'serialize', {});
-        },
-        forEach: function (cb, thisarg, observe) {
-            if (observe !== false) {
-                Observation.add(this, '__keys');
-            }
-            var res;
-            var constructorDefinitions = this._define.definitions;
-            if (constructorDefinitions) {
-                res = eachDefinition(this, cb, thisarg, constructorDefinitions, observe);
-            }
-            if (res === false) {
-                return this;
-            }
-            if (this._instanceDefinitions) {
-                eachDefinition(this, cb, thisarg, this._instanceDefinitions, observe);
-            }
-            return this;
-        },
-        '*': { type: define.types.observable }
-    });
-    for (var prop in define.eventsProto) {
-        DefineMap[prop] = define.eventsProto[prop];
-        Object.defineProperty(DefineMap.prototype, prop, {
-            enumerable: false,
-            value: define.eventsProto[prop],
-            writable: true
-        });
-    }
-    types.DefineMap = DefineMap;
-    types.DefaultMap = DefineMap;
-    DefineMap.prototype.toObject = function () {
-        canLog.warn('Use DefineMap::get instead of DefineMap::toObject');
-        return this.get();
-    };
-    DefineMap.prototype.each = DefineMap.prototype.forEach;
-    var oldIsMapLike = types.isMapLike;
-    types.isMapLike = function (obj) {
-        return obj instanceof DefineMap || oldIsMapLike.apply(this, arguments);
-    };
-    module.exports = ns.DefineMap = DefineMap;
 });
-/*can-define@1.0.17#list/list*/
-define('can-define/list/list', function (require, exports, module) {
-    var Construct = require('can-construct');
-    var define = require('can-define');
-    var make = define.make;
-    var canEvent = require('can-event');
-    var canBatch = require('can-event/batch/batch');
-    var Observation = require('can-observation');
-    var canLog = require('can-util/js/log/log');
-    var defineHelpers = require('can-define/define-helpers/define-helpers');
-    var assign = require('can-util/js/assign/assign');
-    var each = require('can-util/js/each/each');
-    var isArray = require('can-util/js/is-array/is-array');
-    var makeArray = require('can-util/js/make-array/make-array');
-    var types = require('can-types');
+/*can-connect@1.3.8#can-connect*/
+define('can-connect', function (require, exports, module) {
+    var connect = require('can-connect/connect');
+    var base = require('can-connect/base/base');
     var ns = require('can-namespace');
-    var splice = [].splice;
-    var identity = function (x) {
-        return x;
-    };
-    var makeFilterCallback = function (props) {
-        return function (item) {
-            for (var prop in props) {
-                if (item[prop] !== props[prop]) {
-                    return false;
-                }
-            }
-            return true;
-        };
-    };
-    var DefineList = Construct.extend('DefineList', {
-        setup: function (base) {
-            if (DefineList) {
-                var prototype = this.prototype;
-                var result = define(prototype, prototype, base.prototype._define);
-                var itemsDefinition = result.definitions['#'] || result.defaultDefinition;
-                if (itemsDefinition) {
-                    if (itemsDefinition.Type) {
-                        this.prototype.__type = make.set.Type('*', itemsDefinition.Type, identity);
-                    } else if (itemsDefinition.type) {
-                        this.prototype.__type = make.set.type('*', itemsDefinition.type, identity);
-                    }
-                }
-            }
-        }
-    }, {
-        setup: function (items) {
-            if (!this._define) {
-                Object.defineProperty(this, '_define', {
-                    enumerable: false,
-                    value: { definitions: {} }
-                });
-                Object.defineProperty(this, '_data', {
-                    enumerable: false,
-                    value: {}
-                });
-            }
-            define.setup.call(this, {}, false);
-            this._length = 0;
-            if (items) {
-                this.splice.apply(this, [
-                    0,
-                    0
-                ].concat(defineHelpers.toObject(this, items, [], DefineList)));
-            }
-        },
-        __type: define.types.observable,
-        _triggerChange: function (attr, how, newVal, oldVal) {
-            canBatch.start();
-            var index = +attr;
-            if (!~('' + attr).indexOf('.') && !isNaN(index)) {
-                var itemsDefinition = this._define.definitions['#'];
-                if (how === 'add') {
-                    if (itemsDefinition && typeof itemsDefinition.added === 'function') {
-                        Observation.ignore(itemsDefinition.added).call(this, newVal, index);
-                    }
-                    canEvent.dispatch.call(this, how, [
-                        newVal,
-                        index
-                    ]);
-                    canEvent.dispatch.call(this, 'length', [this._length]);
-                } else if (how === 'remove') {
-                    if (itemsDefinition && typeof itemsDefinition.removed === 'function') {
-                        Observation.ignore(itemsDefinition.removed).call(this, oldVal, index);
-                    }
-                    canEvent.dispatch.call(this, how, [
-                        oldVal,
-                        index
-                    ]);
-                    canEvent.dispatch.call(this, 'length', [this._length]);
-                } else {
-                    canEvent.dispatch.call(this, how, [
-                        newVal,
-                        index
-                    ]);
-                }
-            } else {
-                canEvent.dispatch.call(this, {
-                    type: '' + attr,
-                    target: this
-                }, [
-                    newVal,
-                    oldVal
-                ]);
-            }
-            canBatch.stop();
-        },
-        get: function (index) {
-            if (arguments.length) {
-                Observation.add(this, '' + index);
-                return this[index];
-            } else {
-                return defineHelpers.serialize(this, 'get', []);
-            }
-        },
-        set: function (prop, value) {
-            if (typeof prop !== 'object') {
-                prop = isNaN(+prop) || prop % 1 ? prop : +prop;
-                if (typeof prop === 'number') {
-                    if (typeof prop === 'number' && prop > this._length - 1) {
-                        var newArr = new Array(prop + 1 - this._length);
-                        newArr[newArr.length - 1] = value;
-                        this.push.apply(this, newArr);
-                        return newArr;
-                    }
-                    this.splice(prop, 1, value);
-                } else {
-                    var defined = defineHelpers.defineExpando(this, prop, value);
-                    if (!defined) {
-                        this[prop] = value;
-                    }
-                }
-            } else {
-                if (isArray(prop)) {
-                    if (value) {
-                        this.replace(prop);
-                    } else {
-                        this.splice.apply(this, [
-                            0,
-                            prop.length
-                        ].concat(prop));
-                    }
-                } else {
-                    each(prop, function (value, prop) {
-                        this.set(prop, value);
-                    }, this);
-                }
-            }
-            return this;
-        },
-        _items: function () {
-            var arr = [];
-            this._each(function (item) {
-                arr.push(item);
-            });
-            return arr;
-        },
-        _each: function (callback) {
-            for (var i = 0, len = this._length; i < len; i++) {
-                callback(this[i], i);
-            }
-        },
-        splice: function (index, howMany) {
-            var args = makeArray(arguments), added = [], i, len, listIndex, allSame = args.length > 2;
-            index = index || 0;
-            for (i = 0, len = args.length - 2; i < len; i++) {
-                listIndex = i + 2;
-                args[listIndex] = this.__type(args[listIndex], listIndex);
-                added.push(args[listIndex]);
-                if (this[i + index] !== args[listIndex]) {
-                    allSame = false;
-                }
-            }
-            if (allSame && this._length <= added.length) {
-                return added;
-            }
-            if (howMany === undefined) {
-                howMany = args[1] = this._length - index;
-            }
-            var removed = splice.apply(this, args);
-            canBatch.start();
-            if (howMany > 0) {
-                this._triggerChange('' + index, 'remove', undefined, removed);
-            }
-            if (args.length > 2) {
-                this._triggerChange('' + index, 'add', added, removed);
-            }
-            canBatch.stop();
-            return removed;
-        },
-        serialize: function () {
-            return defineHelpers.serialize(this, 'serialize', []);
-        }
-    });
-    var getArgs = function (args) {
-        return args[0] && Array.isArray(args[0]) ? args[0] : makeArray(args);
-    };
-    each({
-        push: 'length',
-        unshift: 0
-    }, function (where, name) {
-        var orig = [][name];
-        DefineList.prototype[name] = function () {
-            var args = [], len = where ? this._length : 0, i = arguments.length, res, val;
-            while (i--) {
-                val = arguments[i];
-                args[i] = this.__type(val, i);
-            }
-            res = orig.apply(this, args);
-            if (!this.comparator || args.length) {
-                this._triggerChange('' + len, 'add', args, undefined);
-            }
-            return res;
-        };
-    });
-    each({
-        pop: 'length',
-        shift: 0
-    }, function (where, name) {
-        DefineList.prototype[name] = function () {
-            if (!this._length) {
-                return undefined;
-            }
-            var args = getArgs(arguments), len = where && this._length ? this._length - 1 : 0;
-            var res = [][name].apply(this, args);
-            this._triggerChange('' + len, 'remove', undefined, [res]);
-            return res;
-        };
-    });
-    assign(DefineList.prototype, {
-        indexOf: function (item, fromIndex) {
-            for (var i = fromIndex || 0, len = this.length; i < len; i++) {
-                if (this.get(i) === item) {
-                    return i;
-                }
-            }
-            return -1;
-        },
-        join: function () {
-            Observation.add(this, 'length');
-            return [].join.apply(this, arguments);
-        },
-        reverse: function () {
-            var list = [].reverse.call(this._items());
-            return this.replace(list);
-        },
-        slice: function () {
-            Observation.add(this, 'length');
-            var temp = Array.prototype.slice.apply(this, arguments);
-            return new this.constructor(temp);
-        },
-        concat: function () {
-            var args = [];
-            each(arguments, function (arg) {
-                if (types.isListLike(arg) || Array.isArray(arg)) {
-                    var arr = types.isListLike(arg) ? makeArray(arg) : arg;
-                    each(arr, function (innerArg) {
-                        args.push(this.__type(innerArg));
-                    }, this);
-                } else {
-                    args.push(this.__type(arg));
-                }
-            }, this);
-            return new this.constructor(Array.prototype.concat.apply(makeArray(this), args));
-        },
-        forEach: function (cb, thisarg) {
-            var item;
-            for (var i = 0, len = this.length; i < len; i++) {
-                item = this.get(i);
-                if (cb.call(thisarg || item, item, i, this) === false) {
-                    break;
-                }
-            }
-            return this;
-        },
-        replace: function (newList) {
-            this.splice.apply(this, [
-                0,
-                this._length
-            ].concat(makeArray(newList || [])));
-            return this;
-        },
-        filter: function (callback, thisArg) {
-            var filteredList = [], self = this, filtered;
-            if (typeof callback === 'object') {
-                callback = makeFilterCallback(callback);
-            }
-            this.each(function (item, index, list) {
-                filtered = callback.call(thisArg | self, item, index, self);
-                if (filtered) {
-                    filteredList.push(item);
-                }
-            });
-            return new this.constructor(filteredList);
-        },
-        map: function (callback, thisArg) {
-            var mappedList = [], self = this;
-            this.each(function (item, index, list) {
-                var mapped = callback.call(thisArg | self, item, index, self);
-                mappedList.push(mapped);
-            });
-            return new this.constructor(mappedList);
-        },
-        sort: function (compareFunction) {
-            var removed = Array.prototype.slice.call(this);
-            Array.prototype.sort.call(this, compareFunction);
-            var added = Array.prototype.slice.call(this);
-            canBatch.start();
-            canEvent.dispatch.call(this, 'remove', [
-                removed,
-                0
-            ]);
-            canEvent.dispatch.call(this, 'add', [
-                added,
-                0
-            ]);
-            canEvent.dispatch.call(this, 'length', [
-                this._length,
-                this._length
-            ]);
-            canBatch.stop();
-            return this;
-        }
-    });
-    for (var prop in define.eventsProto) {
-        DefineList[prop] = define.eventsProto[prop];
-        Object.defineProperty(DefineList.prototype, prop, {
-            enumerable: false,
-            value: define.eventsProto[prop],
-            writable: true
-        });
-    }
-    Object.defineProperty(DefineList.prototype, 'length', {
-        get: function () {
-            if (!this.__inSetup) {
-                Observation.add(this, 'length');
-            }
-            return this._length;
-        },
-        set: function (newVal) {
-            this._length = newVal;
-        },
-        enumerable: true
-    });
-    var oldIsListLike = types.isListLike;
-    types.isListLike = function (obj) {
-        return obj instanceof DefineList || oldIsListLike.apply(this, arguments);
-    };
-    DefineList.prototype.each = DefineList.prototype.forEach;
-    DefineList.prototype.attr = function (prop, value) {
-        canLog.warn('DefineMap::attr shouldn\'t be called');
-        if (arguments.length === 0) {
-            return this.get();
-        } else if (prop && typeof prop === 'object') {
-            return this.set.apply(this, arguments);
-        } else if (arguments.length === 1) {
-            return this.get(prop);
-        } else {
-            return this.set(prop, value);
-        }
-    };
-    DefineList.prototype.item = function (index, value) {
-        if (arguments.length === 1) {
-            return this.get(index);
-        } else {
-            return this.set(index, value);
-        }
-    };
-    DefineList.prototype.items = function () {
-        canLog.warn('DefineList::get should should be used instead of DefineList::items');
-        return this.get();
-    };
-    types.DefineList = DefineList;
-    types.DefaultList = DefineList;
-    module.exports = ns.DefineList = DefineList;
+    connect.base = base;
+    module.exports = ns.connect = connect;
 });
 /*can-fixture@1.0.13#helpers/getid*/
 define('can-fixture/helpers/getid', function (require, exports, module) {
@@ -13834,6 +12354,62 @@ define('can-connect/helpers/get-items', function (require, exports, module) {
         } else {
             return data.data;
         }
+    };
+});
+/*can-connect@1.3.8#helpers/sorted-set-json*/
+define('can-connect/helpers/sorted-set-json', function (require, exports, module) {
+    var forEach = [].forEach;
+    var keys = Object.keys;
+    module.exports = function (set) {
+        if (set == null) {
+            return set;
+        } else {
+            var sorted = {};
+            forEach.call(keys(set).sort(), function (prop) {
+                sorted[prop] = set[prop];
+            });
+            return JSON.stringify(sorted);
+        }
+    };
+});
+/*can-connect@1.3.8#helpers/overwrite*/
+define('can-connect/helpers/overwrite', function (require, exports, module) {
+    module.exports = function (d, s, id) {
+        for (var prop in d) {
+            if (prop !== id && !(prop in s)) {
+                delete d[prop];
+            }
+        }
+        for (prop in s) {
+            d[prop] = s[prop];
+        }
+        return d;
+    };
+});
+/*can-connect@1.3.8#helpers/set-add*/
+define('can-connect/helpers/set-add', function (require, exports, module) {
+    var canSet = require('can-set');
+    module.exports = function (connection, setItems, items, item, algebra) {
+        var index = canSet.index(setItems, items, item, algebra);
+        if (index === undefined) {
+            index = items.length;
+        }
+        var copy = items.slice(0);
+        copy.splice(index, 0, item);
+        return copy;
+    };
+});
+/*can-connect@1.3.8#helpers/get-index-by-id*/
+define('can-connect/helpers/get-index-by-id', function (require, exports, module) {
+    module.exports = function (connection, props, items) {
+        var id = connection.id(props);
+        for (var i = 0; i < items.length; i++) {
+            var connId = connection.id(items[i]);
+            if (id == connId) {
+                return i;
+            }
+        }
+        return -1;
     };
 });
 /*can-connect@1.3.8#helpers/clone-data*/
@@ -14833,6 +13409,13 @@ define('can-map/bubble', function (require, exports, module) {
         }
     };
     module.exports = bubble;
+});
+/*can-util@3.3.7#js/is-promise/is-promise*/
+define('can-util/js/is-promise/is-promise', function (require, exports, module) {
+    var types = require('can-types');
+    module.exports = function (obj) {
+        return types.isPromise(obj);
+    };
 });
 /*can-map@3.0.6#map-helpers*/
 define('can-map/map-helpers', function (require, exports, module) {
@@ -15964,6 +14547,746 @@ define('can-map-define', function (require, exports, module) {
     };
     module.exports = define;
 });
+/*can-util@3.3.7#dom/ajax/ajax*/
+define('can-util/dom/ajax/ajax', function (require, exports, module) {
+    (function (global) {
+        var Global = require('can-util/js/global/global');
+        var assign = require('can-util/js/assign/assign');
+        var namespace = require('can-namespace');
+        var parseURI = require('can-util/js/parse-uri/parse-uri');
+        var param = require('can-param');
+        var xhrs = [
+                function () {
+                    return new XMLHttpRequest();
+                },
+                function () {
+                    return new ActiveXObject('Microsoft.XMLHTTP');
+                },
+                function () {
+                    return new ActiveXObject('MSXML2.XMLHTTP.3.0');
+                },
+                function () {
+                    return new ActiveXObject('MSXML2.XMLHTTP');
+                }
+            ], _xhrf = null;
+        var originUrl = parseURI(Global().location.href);
+        var makeXhr = function () {
+            if (_xhrf != null) {
+                return _xhrf();
+            }
+            for (var i = 0, l = xhrs.length; i < l; i++) {
+                try {
+                    var f = xhrs[i], req = f();
+                    if (req != null) {
+                        _xhrf = f;
+                        return req;
+                    }
+                } catch (e) {
+                    continue;
+                }
+            }
+            return function () {
+            };
+        };
+        var _xhrResp = function (xhr, options) {
+            switch (options.dataType || xhr.getResponseHeader('Content-Type').split(';')[0]) {
+            case 'text/xml':
+            case 'xml':
+                return xhr.responseXML;
+            case 'text/json':
+            case 'application/json':
+            case 'text/javascript':
+            case 'application/javascript':
+            case 'application/x-javascript':
+            case 'json':
+                return JSON.parse(xhr.responseText);
+            default:
+                return xhr.responseText;
+            }
+        };
+        module.exports = namespace.ajax = function (o) {
+            var xhr = makeXhr(), timer, n = 0;
+            var deferred = {};
+            var promise = new Promise(function (resolve, reject) {
+                deferred.resolve = resolve;
+                deferred.reject = reject;
+            });
+            var requestUrl;
+            promise.abort = function () {
+                xhr.abort();
+            };
+            o = assign({
+                userAgent: 'XMLHttpRequest',
+                lang: 'en',
+                type: 'GET',
+                data: null,
+                dataType: 'json'
+            }, o);
+            if (o.crossDomain == null) {
+                try {
+                    requestUrl = parseURI(o.url);
+                    o.crossDomain = !!(requestUrl.protocol && requestUrl.protocol !== originUrl.protocol || requestUrl.host && requestUrl.host !== originUrl.host);
+                } catch (e) {
+                    o.crossDomain = true;
+                }
+            }
+            if (o.timeout) {
+                timer = setTimeout(function () {
+                    xhr.abort();
+                    if (o.timeoutFn) {
+                        o.timeoutFn(o.url);
+                    }
+                }, o.timeout);
+            }
+            xhr.onreadystatechange = function () {
+                try {
+                    if (xhr.readyState === 4) {
+                        if (timer) {
+                            clearTimeout(timer);
+                        }
+                        if (xhr.status < 300) {
+                            if (o.success) {
+                                o.success(_xhrResp(xhr, o));
+                            }
+                        } else if (o.error) {
+                            o.error(xhr, xhr.status, xhr.statusText);
+                        }
+                        if (o.complete) {
+                            o.complete(xhr, xhr.statusText);
+                        }
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            deferred.resolve(_xhrResp(xhr, o));
+                        } else {
+                            deferred.reject(xhr);
+                        }
+                    } else if (o.progress) {
+                        o.progress(++n);
+                    }
+                } catch (e) {
+                    deferred.reject(e);
+                }
+            };
+            var url = o.url, data = null, type = o.type.toUpperCase();
+            var isPost = type === 'POST' || type === 'PUT';
+            if (!isPost && o.data) {
+                url += '?' + param(o.data);
+            }
+            xhr.open(type, url);
+            var isSimpleCors = o.crossDomain && [
+                'GET',
+                'POST',
+                'HEAD'
+            ].indexOf(type) !== -1;
+            if (isPost) {
+                var isJson = o.dataType.indexOf('json') >= 0;
+                data = isJson && !isSimpleCors ? typeof o.data === 'object' ? JSON.stringify(o.data) : o.data : param(o.data);
+                xhr.setRequestHeader('Content-Type', isJson && !isSimpleCors ? 'application/json' : 'application/x-www-form-urlencoded');
+            }
+            if (!isSimpleCors) {
+                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            }
+            xhr.send(data);
+            return promise;
+        };
+    }(function () {
+        return this;
+    }()));
+});
+/*can-connect@1.3.8#helpers/get-id-props*/
+define('can-connect/helpers/get-id-props', function (require, exports, module) {
+    module.exports = function (connection) {
+        var ids = [], algebra = connection.algebra;
+        if (algebra && algebra.clauses && algebra.clauses.id) {
+            for (var prop in algebra.clauses.id) {
+                ids.push(prop);
+            }
+        }
+        if (connection.idProp && !ids.length) {
+            ids.push(connection.idProp);
+        }
+        if (!ids.length) {
+            ids.push('id');
+        }
+        return ids;
+    };
+});
+/*can-util@3.3.7#js/is-promise-like/is-promise-like*/
+define('can-util/js/is-promise-like/is-promise-like', function (require, exports, module) {
+    module.exports = function (obj) {
+        return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+    };
+});
+/*can-util@3.3.7#js/make-promise/make-promise*/
+define('can-util/js/make-promise/make-promise', function (require, exports, module) {
+    var isPromiseLike = require('can-util/js/is-promise-like/is-promise-like');
+    var isPromise = require('can-util/js/is-promise/is-promise');
+    module.exports = function (obj) {
+        if (isPromiseLike(obj) && !isPromise(obj)) {
+            return new Promise(function (resolve, reject) {
+                obj.then(resolve, reject);
+            });
+        } else {
+            return obj;
+        }
+    };
+});
+/*can-connect@1.3.8#data/url/url*/
+define('can-connect/data/url/url', function (require, exports, module) {
+    var isArray = require('can-util/js/is-array/is-array');
+    var assign = require('can-util/js/assign/assign');
+    var each = require('can-util/js/each/each');
+    var ajax = require('can-util/dom/ajax/ajax');
+    var string = require('can-util/js/string/string');
+    var getIdProps = require('can-connect/helpers/get-id-props');
+    var dev = require('can-util/js/dev/dev');
+    var connect = require('can-connect');
+    var makePromise = require('can-util/js/make-promise/make-promise');
+    module.exports = connect.behavior('data/url', function (baseConnection) {
+        var behavior = {};
+        each(pairs, function (reqOptions, name) {
+            behavior[name] = function (params) {
+                if (typeof this.url === 'object') {
+                    if (typeof this.url[reqOptions.prop] === 'function') {
+                        return makePromise(this.url[reqOptions.prop](params));
+                    } else if (this.url[reqOptions.prop]) {
+                        return makePromise(makeAjax(this.url[reqOptions.prop], params, reqOptions.type, this.ajax || ajax, findContentType(this.url), reqOptions));
+                    }
+                }
+                var resource = typeof this.url === 'string' ? this.url : this.url.resource;
+                if (resource) {
+                    var idProps = getIdProps(this);
+                    return makePromise(makeAjax(createURLFromResource(resource, idProps[0], reqOptions.prop), params, reqOptions.type, this.ajax || ajax, findContentType(this.url), reqOptions));
+                }
+                return baseConnection[name].call(this, params);
+            };
+        });
+        return behavior;
+    });
+    var pairs = {
+        getListData: {
+            prop: 'getListData',
+            type: 'GET'
+        },
+        getData: {
+            prop: 'getData',
+            type: 'GET'
+        },
+        createData: {
+            prop: 'createData',
+            type: 'POST'
+        },
+        updateData: {
+            prop: 'updateData',
+            type: 'PUT'
+        },
+        destroyData: {
+            prop: 'destroyData',
+            type: 'DELETE',
+            includeData: false
+        }
+    };
+    var findContentType = function (url) {
+        if (typeof url === 'object' && url.contentType) {
+            var acceptableType = url.contentType === 'application/x-www-form-urlencoded' || url.contentType === 'application/json';
+            if (acceptableType) {
+                return url.contentType;
+            } else {
+                dev.warn('Unacceptable contentType on can-connect request. ' + 'Use \'application/json\' or \'application/x-www-form-urlencoded\'');
+            }
+        }
+        return 'application/json';
+    };
+    var makeAjax = function (ajaxOb, data, type, ajax, contentType, reqOptions) {
+        var params = {};
+        if (typeof ajaxOb === 'string') {
+            var parts = ajaxOb.split(/\s+/);
+            params.url = parts.pop();
+            if (parts.length) {
+                params.type = parts.pop();
+            }
+        } else {
+            assign(params, ajaxOb);
+        }
+        params.data = typeof data === 'object' && !isArray(data) ? assign(params.data || {}, data) : data;
+        params.url = string.sub(params.url, params.data, true);
+        var encodeJSON = contentType !== 'application/x-www-form-urlencoded' && (type && (type === 'POST' || type === 'PUT'));
+        if (encodeJSON) {
+            params.data = JSON.stringify(params.data);
+            params.contentType = contentType;
+        }
+        if (reqOptions.includeData === false) {
+            delete params.data;
+        }
+        return ajax(assign({
+            type: type || 'post',
+            dataType: 'json'
+        }, params));
+    };
+    var createURLFromResource = function (resource, idProp, name) {
+        var url = resource.replace(/\/+$/, '');
+        if (name === 'getListData' || name === 'createData') {
+            return url;
+        } else {
+            return url + '/{' + idProp + '}';
+        }
+    };
+});
+/*can-connect@1.3.8#helpers/weak-reference-map*/
+define('can-connect/helpers/weak-reference-map', function (require, exports, module) {
+    var assign = require('can-util/js/assign/assign');
+    var WeakReferenceMap = function () {
+        this.set = {};
+    };
+    assign(WeakReferenceMap.prototype, {
+        has: function (key) {
+            return !!this.set[key];
+        },
+        addReference: function (key, item) {
+            if (typeof key === 'undefined') {
+                return;
+            }
+            var data = this.set[key];
+            if (!data) {
+                data = this.set[key] = {
+                    item: item,
+                    referenceCount: 0,
+                    key: key
+                };
+            }
+            data.referenceCount++;
+        },
+        deleteReference: function (key) {
+            var data = this.set[key];
+            if (data) {
+                data.referenceCount--;
+                if (data.referenceCount === 0) {
+                    delete this.set[key];
+                }
+            }
+        },
+        get: function (key) {
+            var data = this.set[key];
+            if (data) {
+                return data.item;
+            }
+        },
+        forEach: function (cb) {
+            for (var id in this.set) {
+                cb(this.set[id].item, id);
+            }
+        }
+    });
+    module.exports = WeakReferenceMap;
+});
+/*can-connect@1.3.8#helpers/id-merge*/
+define('can-connect/helpers/id-merge', function (require, exports, module) {
+    var map = [].map;
+    module.exports = function (list, update, id, make) {
+        var listIndex = 0, updateIndex = 0;
+        while (listIndex < list.length && updateIndex < update.length) {
+            var listItem = list[listIndex], updateItem = update[updateIndex], lID = id(listItem), uID = id(updateItem);
+            if (id(listItem) === id(updateItem)) {
+                listIndex++;
+                updateIndex++;
+                continue;
+            }
+            if (updateIndex + 1 < update.length && id(update[updateIndex + 1]) === lID) {
+                list.splice(listIndex, 0, make(update[updateIndex]));
+                listIndex++;
+                updateIndex++;
+                continue;
+            } else if (listIndex + 1 < list.length && id(list[listIndex + 1]) === uID) {
+                list.splice(listIndex, 1);
+                listIndex++;
+                updateIndex++;
+                continue;
+            } else {
+                list.splice.apply(list, [
+                    listIndex,
+                    list.length - listIndex
+                ].concat(map.call(update.slice(updateIndex), make)));
+                return list;
+            }
+        }
+        if (updateIndex === update.length && listIndex === list.length) {
+            return;
+        }
+        list.splice.apply(list, [
+            listIndex,
+            list.length - listIndex
+        ].concat(map.call(update.slice(updateIndex), make)));
+        return;
+    };
+});
+/*can-connect@1.3.8#constructor/constructor*/
+define('can-connect/constructor/constructor', function (require, exports, module) {
+    var isArray = require('can-util/js/is-array/is-array');
+    var makeArray = require('can-util/js/make-array/make-array');
+    var assign = require('can-util/js/assign/assign');
+    var connect = require('can-connect');
+    var WeakReferenceMap = require('can-connect/helpers/weak-reference-map');
+    var overwrite = require('can-connect/helpers/overwrite');
+    var idMerge = require('can-connect/helpers/id-merge');
+    module.exports = connect.behavior('constructor', function (baseConnection) {
+        var behavior = {
+            cidStore: new WeakReferenceMap(),
+            _cid: 0,
+            get: function (params) {
+                var self = this;
+                return this.getData(params).then(function (data) {
+                    return self.hydrateInstance(data);
+                });
+            },
+            getList: function (set) {
+                set = set || {};
+                var self = this;
+                return this.getListData(set).then(function (data) {
+                    return self.hydrateList(data, set);
+                });
+            },
+            hydrateList: function (listData, set) {
+                if (isArray(listData)) {
+                    listData = { data: listData };
+                }
+                var arr = [];
+                for (var i = 0; i < listData.data.length; i++) {
+                    arr.push(this.hydrateInstance(listData.data[i]));
+                }
+                listData.data = arr;
+                if (this.list) {
+                    return this.list(listData, set);
+                } else {
+                    var list = listData.data.slice(0);
+                    list[this.listSetProp || '__listSet'] = set;
+                    copyMetadata(listData, list);
+                    return list;
+                }
+            },
+            hydrateInstance: function (props) {
+                if (this.instance) {
+                    return this.instance(props);
+                } else {
+                    return assign({}, props);
+                }
+            },
+            save: function (instance) {
+                var serialized = this.serializeInstance(instance);
+                var id = this.id(instance);
+                var self = this;
+                if (id === undefined) {
+                    var cid = this._cid++;
+                    this.cidStore.addReference(cid, instance);
+                    return this.createData(serialized, cid).then(function (data) {
+                        if (data !== undefined) {
+                            self.createdInstance(instance, data);
+                        }
+                        self.cidStore.deleteReference(cid, instance);
+                        return instance;
+                    });
+                } else {
+                    return this.updateData(serialized).then(function (data) {
+                        if (data !== undefined) {
+                            self.updatedInstance(instance, data);
+                        }
+                        return instance;
+                    });
+                }
+            },
+            destroy: function (instance) {
+                var serialized = this.serializeInstance(instance), self = this;
+                return this.destroyData(serialized).then(function (data) {
+                    if (data !== undefined) {
+                        self.destroyedInstance(instance, data);
+                    }
+                    return instance;
+                });
+            },
+            createdInstance: function (instance, props) {
+                assign(instance, props);
+            },
+            updatedInstance: function (instance, data) {
+                overwrite(instance, data, this.idProp);
+            },
+            updatedList: function (list, listData, set) {
+                var instanceList = [];
+                for (var i = 0; i < listData.data.length; i++) {
+                    instanceList.push(this.hydrateInstance(listData.data[i]));
+                }
+                idMerge(list, instanceList, this.id.bind(this), this.hydrateInstance.bind(this));
+                copyMetadata(listData, list);
+            },
+            destroyedInstance: function (instance, data) {
+                overwrite(instance, data, this.idProp);
+            },
+            serializeInstance: function (instance) {
+                return assign({}, instance);
+            },
+            serializeList: function (list) {
+                var self = this;
+                return makeArray(list).map(function (instance) {
+                    return self.serializeInstance(instance);
+                });
+            },
+            isNew: function (instance) {
+                var id = this.id(instance);
+                return !(id || id === 0);
+            }
+        };
+        return behavior;
+    });
+    function copyMetadata(listData, list) {
+        for (var prop in listData) {
+            if (prop !== 'data') {
+                if (typeof list.set === 'function') {
+                    list.set(prop, listData[prop]);
+                } else if (typeof list.attr === 'function') {
+                    list.attr(prop, listData[prop]);
+                } else {
+                    list[prop] = listData[prop];
+                }
+            }
+        }
+    }
+});
+/*can-connect@1.3.8#constructor/store/store*/
+define('can-connect/constructor/store/store', function (require, exports, module) {
+    var connect = require('can-connect');
+    var WeakReferenceMap = require('can-connect/helpers/weak-reference-map');
+    var sortedSetJSON = require('can-connect/helpers/sorted-set-json');
+    var canEvent = require('can-event');
+    var assign = require('can-util/js/assign/assign');
+    var pendingRequests = 0;
+    var noRequestsTimer = null;
+    var requests = {
+        increment: function (connection) {
+            pendingRequests++;
+            clearTimeout(noRequestsTimer);
+        },
+        decrement: function (connection) {
+            pendingRequests--;
+            if (pendingRequests === 0) {
+                noRequestsTimer = setTimeout(function () {
+                    requests.dispatch('end');
+                }, 10);
+            }
+        },
+        count: function () {
+            return pendingRequests;
+        }
+    };
+    assign(requests, canEvent);
+    var constructorStore = connect.behavior('constructor/store', function (baseConnection) {
+        var behavior = {
+            instanceStore: new WeakReferenceMap(),
+            listStore: new WeakReferenceMap(),
+            _requestInstances: {},
+            _requestLists: {},
+            _finishedRequest: function () {
+                var id;
+                requests.decrement(this);
+                if (requests.count() === 0) {
+                    for (id in this._requestInstances) {
+                        this.instanceStore.deleteReference(id);
+                    }
+                    this._requestInstances = {};
+                    for (id in this._requestLists) {
+                        this.listStore.deleteReference(id);
+                    }
+                    this._requestLists = {};
+                }
+            },
+            addInstanceReference: function (instance, id) {
+                this.instanceStore.addReference(id || this.id(instance), instance);
+            },
+            addInstanceMetaData: function (instance, name, value) {
+                var data = this.instanceStore.set[this.id(instance)];
+                if (data) {
+                    data[name] = value;
+                }
+            },
+            getInstanceMetaData: function (instance, name) {
+                var data = this.instanceStore.set[this.id(instance)];
+                if (data) {
+                    return data[name];
+                }
+            },
+            deleteInstanceMetaData: function (instance, name) {
+                var data = this.instanceStore.set[this.id(instance)];
+                delete data[name];
+            },
+            deleteInstanceReference: function (instance) {
+                this.instanceStore.deleteReference(this.id(instance), instance);
+            },
+            addListReference: function (list, set) {
+                var id = sortedSetJSON(set || this.listSet(list));
+                if (id) {
+                    this.listStore.addReference(id, list);
+                }
+            },
+            deleteListReference: function (list, set) {
+                var id = sortedSetJSON(set || this.listSet(list));
+                if (id) {
+                    this.listStore.deleteReference(id, list);
+                }
+            },
+            hydratedInstance: function (instance) {
+                if (requests.count() > 0) {
+                    var id = this.id(instance);
+                    if (!this._requestInstances[id]) {
+                        this.addInstanceReference(instance);
+                        this._requestInstances[id] = instance;
+                    }
+                }
+            },
+            hydrateInstance: function (props) {
+                var id = this.id(props);
+                if ((id || id === 0) && this.instanceStore.has(id)) {
+                    var storeInstance = this.instanceStore.get(id);
+                    this.updatedInstance(storeInstance, props);
+                    return storeInstance;
+                }
+                var instance = baseConnection.hydrateInstance.call(this, props);
+                this.hydratedInstance(instance);
+                return instance;
+            },
+            hydratedList: function (list, set) {
+                if (requests.count() > 0) {
+                    var id = sortedSetJSON(set || this.listSet(list));
+                    if (id) {
+                        if (!this._requestLists[id]) {
+                            this.addListReference(list, set);
+                            this._requestLists[id] = list;
+                        }
+                    }
+                }
+            },
+            hydrateList: function (listData, set) {
+                set = set || this.listSet(listData);
+                var id = sortedSetJSON(set);
+                if (id && this.listStore.has(id)) {
+                    var storeList = this.listStore.get(id);
+                    this.updatedList(storeList, listData, set);
+                    return storeList;
+                }
+                var list = baseConnection.hydrateList.call(this, listData, set);
+                this.hydratedList(list, set);
+                return list;
+            },
+            getList: function (params) {
+                var self = this;
+                requests.increment(this);
+                var promise = baseConnection.getList.call(this, params);
+                promise.then(function (instances) {
+                    self._finishedRequest();
+                }, function () {
+                    self._finishedRequest();
+                });
+                return promise;
+            },
+            get: function (params) {
+                var self = this;
+                requests.increment(this);
+                var promise = baseConnection.get.call(this, params);
+                promise.then(function (instance) {
+                    self._finishedRequest();
+                }, function () {
+                    self._finishedRequest();
+                });
+                return promise;
+            },
+            save: function (instance) {
+                var self = this;
+                requests.increment(this);
+                var updating = !this.isNew(instance);
+                if (updating) {
+                    this.addInstanceReference(instance);
+                }
+                var promise = baseConnection.save.call(this, instance);
+                promise.then(function (instances) {
+                    if (updating) {
+                        self.deleteInstanceReference(instance);
+                    }
+                    self._finishedRequest();
+                }, function () {
+                    self._finishedRequest();
+                });
+                return promise;
+            },
+            destroy: function (instance) {
+                var self = this;
+                requests.increment(this);
+                var promise = baseConnection.destroy.call(this, instance);
+                promise.then(function (instance) {
+                    self._finishedRequest();
+                }, function () {
+                    self._finishedRequest();
+                });
+                return promise;
+            }
+        };
+        return behavior;
+    });
+    constructorStore.requests = requests;
+    module.exports = constructorStore;
+});
+/*can-connect@1.3.8#data/parse/parse*/
+define('can-connect/data/parse/parse', function (require, exports, module) {
+    var connect = require('can-connect');
+    var each = require('can-util/js/each/each');
+    var isArray = require('can-util/js/is-array/is-array');
+    var getObject = require('can-util/js/get/get');
+    module.exports = connect.behavior('data/parse', function (baseConnection) {
+        var behavior = {
+            parseListData: function (responseData) {
+                if (baseConnection.parseListData) {
+                    responseData = baseConnection.parseListData.apply(this, arguments);
+                }
+                var result;
+                if (isArray(responseData)) {
+                    result = { data: responseData };
+                } else {
+                    var prop = this.parseListProp || 'data';
+                    responseData.data = getObject(responseData, prop);
+                    result = responseData;
+                    if (prop !== 'data') {
+                        delete responseData[prop];
+                    }
+                    if (!isArray(result.data)) {
+                        throw new Error('Could not get any raw data while converting using .parseListData');
+                    }
+                }
+                var arr = [];
+                for (var i = 0; i < result.data.length; i++) {
+                    arr.push(this.parseInstanceData(result.data[i]));
+                }
+                result.data = arr;
+                return result;
+            },
+            parseInstanceData: function (props) {
+                if (baseConnection.parseInstanceData) {
+                    props = baseConnection.parseInstanceData.apply(this, arguments) || props;
+                }
+                return this.parseInstanceProp ? getObject(props, this.parseInstanceProp) || props : props;
+            }
+        };
+        each(pairs, function (parseFunction, name) {
+            behavior[name] = function (params) {
+                var self = this;
+                return baseConnection[name].call(this, params).then(function () {
+                    return self[parseFunction].apply(self, arguments);
+                });
+            };
+        });
+        return behavior;
+    });
+    var pairs = {
+        getListData: 'parseListData',
+        getData: 'parseInstanceData',
+        createData: 'parseInstanceData',
+        updateData: 'parseInstanceData',
+        destroyData: 'parseInstanceData'
+    };
+});
 /*can-connect@1.3.8#can/model/model*/
 define('can-connect/can/model/model', function (require, exports, module) {
     var $ = require('jquery'), connect = require('can-connect'), persist = require('can-connect/data/url/url'), constructor = require('can-connect/constructor/constructor'), instanceStore = require('can-connect/constructor/store/store'), parseData = require('can-connect/data/parse/parse'), CanMap = require('can-map'), CanList = require('can-list'), Observation = require('can-observation'), canEvent = require('can-event'), ns = require('can-namespace');
@@ -15992,7 +15315,7 @@ define('can-connect/can/model/model', function (require, exports, module) {
     var mapBehavior = connect.behavior(function (baseConnection) {
         var behavior = {
             id: function (inst) {
-                var idProp = inst.constructor.id || 'id';
+                var idProp = inst.constructor.id || this.idProp || 'id';
                 if (inst instanceof CanMap) {
                     if (callCanReadingOnIdRead) {
                         Observation.add(inst, idProp);
@@ -16428,7 +15751,6 @@ define('can/legacy', function (require, exports, module) {
     require('can-compute');
     require('can-event');
     require('can-view-model');
-    require('can-connect/can/base-map/base-map');
     require('can-define/map/map');
     require('can-define/list/list');
     require('can-set');
@@ -16441,7 +15763,6 @@ define('can/legacy', function (require, exports, module) {
     require('can-jquery');
     can.view.attr = can.view.callbacks.attr;
     can.view.tag = can.view.callbacks.tag;
-	window.can = can;
     module.exports = can;
 });
 /*[global-shim-end]*/
